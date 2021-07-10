@@ -1,7 +1,8 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }: AppProps) {
+import 'react-notion/src/styles.css'
+import 'prismjs/themes/prism-tomorrow.css'
+
+export default function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />
 }
-export default MyApp
