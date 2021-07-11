@@ -5,6 +5,7 @@ export interface PostMeta {
   isPublished: boolean
   tags: [string]
   title: string
+  description: string
 }
 
 export interface MetaDataFromBlock {

@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import { getBlogPostMeta, getBlogPosts } from '../lib/api'
-import { getMetaFromBlock, deleteUndefined } from '../lib/utils'
-
-export type Post = { id: string; slug: string; title: string; date: string }
+import { getBlogPosts } from '../lib/api'
+import { Post } from '../lib/types'
+import Header from '../components/Header'
 
 export async function getStaticProps() {
   const posts = await getBlogPosts()
@@ -14,10 +13,11 @@ export async function getStaticProps() {
 }
 
 function HomePage({ posts }: { posts: Post[] }) {
+  console.log(posts)
   return (
-    <div className="content">
-      <h1>Posts</h1>
-      <div>
+    <>
+      <Header />
+      <main className="content">
         {posts.map((post) => (
           <Link
             href={{
@@ -26,13 +26,100 @@ function HomePage({ posts }: { posts: Post[] }) {
             }}
             key={post.id}
           >
-            <a>
-              <b>{post.title}</b>
+            <a className="list-item">
+              <div className="item-image">
+                <img src={post.pageCover} alt="Page Cover" />
+              </div>
+              <div className="item-text">
+                <div className="text-title">{post.title}</div>
+                <div className="text-desc">{post.description}</div>
+              </div>
             </a>
           </Link>
         ))}
-      </div>
-    </div>
+      </main>
+      <style jsx global>{`
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+        }
+
+        html {
+          overflow: hidden;
+        }
+        body {
+          width: 100vw;
+          height: 100vh;
+          perspective: 100px;
+          transform-style: preserve-3d;
+          overflow-y: auto;
+          overflow-x: hidden;
+        }
+        .content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .list-item {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 45vh;
+          overflow: hidden;
+        }
+
+        .item-image {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          transform: translateZ(-50px) scale(2.4);
+        }
+
+        .item-image img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .item-image::before {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.4);
+          transition: all 0.3s ease;
+        }
+
+        .list-item:hover .item-image::before {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .item-text {
+          color: #ffffff;
+          text-align: center;
+        }
+
+        .text-title {
+          font-size: 2rem;
+          font-weight: bolder;
+          margin-bottom: 20px;
+        }
+
+        .text-desc {
+          font-size: 1.2rem;
+        }
+      `}</style>
+    </>
   )
 }
 

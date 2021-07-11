@@ -1,4 +1,4 @@
-import { BlockMapType, BlockType, PageValueType } from 'react-notion'
+import { BlockMapType, PageValueType } from 'react-notion'
 import { MetaDataFromBlock } from './types'
 
 export function getMetaFromBlock(
@@ -29,7 +29,8 @@ export function formatImagePath(
   )}?table=block&id=${id}&cache=v2`
 }
 
-export const isProd = process.env.NODE_ENV === 'production'
+// export const isProd = process.env.NODE_ENV === 'production'
+export const isProd = true
 
 // Hack needed to avoid JSON-Serialization validation error from Next.js https://github.com/zeit/next.js/discussions/11209
 // >>> Reason: `undefined` cannot be serialized as JSON. Please use `null` or omit this value all together.
