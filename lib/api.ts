@@ -3,8 +3,8 @@ import { NOTION_BLOG_ID, CACHE_EXPIRE_TIME_IN_MS } from '../site.config'
 import { PostMeta, Post } from './types'
 import { getMetaFromBlock, isProd } from './utils'
 
-export const getBlogPostMeta = async (): Promise<PostMeta[]> => {
-  let postMetas: PostMeta[]
+export const getBlogPostMeta = async (): Promise<PostMeta[] | undefined> => {
+  let postMetas: PostMeta[] | undefined = undefined
   if (isProd) {
     postMetas = cache.get('postMetas')
   }
@@ -20,13 +20,14 @@ export const getBlogPostMeta = async (): Promise<PostMeta[]> => {
   return postMetas
 }
 
-export const getBlogPosts = async (): Promise<Post[]> => {
-  let posts: Post[]
+export const getBlogPosts = async (): Promise<Post[] | undefined> => {
+  let posts: Post[] | undefined = undefined
   if (isProd) {
     posts = cache.get('posts')
   }
   if (!posts) {
     const postMetas = await getBlogPostMeta()
+    if (!postMetas) return undefined
     posts = await Promise.all(
       postMetas.map((postMeta) => {
         return fetch(`https://notion-api.splitbee.io/v1/page/${postMeta.id}`)

@@ -9,6 +9,7 @@ export async function getStaticProps({
 }) {
   // Get all posts again
   const posts = await getBlogPosts()
+  if (!posts) return {}
 
   // Find the current blogpost by slug
   const post = posts.find((post) => encodeURIComponent(post.title) === slug)
@@ -30,6 +31,7 @@ const BlogPost: React.FC<{ post: Post }> = ({ post }) => {
 
 export async function getStaticPaths() {
   const postMetas = await getBlogPostMeta()
+  if (!postMetas) return {}
   return {
     paths: postMetas.map(
       (postMeta) => `/post/${encodeURIComponent(postMeta.title)}`
