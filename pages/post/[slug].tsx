@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { NotionRenderer } from 'react-notion'
 import { getBlogPostMeta, getBlogPosts } from '../../lib/api'
 import { Post } from '../../lib/types'
@@ -22,10 +23,24 @@ export async function getStaticProps({
 const BlogPost: React.FC<{ post: Post }> = ({ post }) => {
   if (!post) return null
   return (
-    <div className="content">
-      <h1>{post.title}</h1>
-      <NotionRenderer blockMap={post.block} />
-    </div>
+    <>
+      {post.pageCover && (
+        <Image
+          width={1000}
+          height={300}
+          src={post.pageCover}
+          quality={100}
+          layout="responsive"
+          objectFit="cover"
+        />
+      )}
+      <article className="container">
+        <h1 className="text-4xl md:text-6xl text-center font-bold my-5 md:my-20">
+          {post.title}
+        </h1>
+        <NotionRenderer blockMap={post.block} />
+      </article>
+    </>
   )
 }
 

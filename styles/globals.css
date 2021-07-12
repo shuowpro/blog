@@ -24,14 +24,6 @@ a:focus,
   box-shadow: 0 0 0 3px rgba(16, 141, 255, 0.5);
 }
 
-.container {
-  @apply max-w-screen-lg;
-}
-
-.post-container {
-  @apply max-w-3xl mx-auto w-full px-4;
-}
-
 .achievement-notion .notion-text {
   @apply text-gray-600 pl-0;
 }

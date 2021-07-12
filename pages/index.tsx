@@ -64,6 +64,7 @@ function HomePage({ posts }: { posts: Post[] }) {
           transform-style: preserve-3d;
           overflow-y: auto;
           overflow-x: hidden;
+          -webkit-overflow-scrolling: touch;
         }
       `}</style>
       <style jsx>
