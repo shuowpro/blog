@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { NotionRenderer } from 'react-notion'
 import { getBlogPostMeta, getBlogPosts } from '../../lib/api'
 import { Post } from '../../lib/types'
+import { clean } from '../../lib/utils'
 
 export async function getStaticProps({
   params: { slug },
@@ -16,7 +17,7 @@ export async function getStaticProps({
   const post = posts.find((post) => encodeURIComponent(post.title) === slug)
 
   return {
-    props: { post: JSON.parse(JSON.stringify(post)) },
+    props: { post: clean(post) },
   }
 }
 

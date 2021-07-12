@@ -32,16 +32,10 @@ export function formatImagePath(
 // export const isProd = process.env.NODE_ENV === 'production'
 export const isProd = true
 
-// Hack needed to avoid JSON-Serialization validation error from Next.js https://github.com/zeit/next.js/discussions/11209
-// >>> Reason: `undefined` cannot be serialized as JSON. Please use `null` or omit this value all together.
-export const deleteUndefined = (obj: Record<string, any> | undefined): void => {
-  if (obj) {
-    Object.keys(obj).forEach((key: string) => {
-      if (obj[key] && typeof obj[key] === 'object') {
-        deleteUndefined(obj[key])
-      } else if (typeof obj[key] === 'undefined') {
-        delete obj[key] // eslint-disable-line no-param-reassign
-      }
-    })
+// hack to remove undefined
+export function clean(obj: any) {
+  let replacer = function (key: any, value: any) {
+    return typeof value === 'undefined' ? null : value
   }
+  return JSON.parse(JSON.stringify(obj, replacer))
 }

@@ -3,13 +3,14 @@ import Image from 'next/image'
 import { getBlogPosts } from '../lib/api'
 import { Post } from '../lib/types'
 import Header from '../components/Header'
+import { clean } from '../lib/utils'
 
 export async function getStaticProps() {
   const posts = await getBlogPosts()
   if (!posts) return {}
   return {
     props: {
-      posts: JSON.parse(JSON.stringify(posts)),
+      posts: clean(posts),
     },
   }
 }
