@@ -81,8 +81,10 @@ const Layout = ({ posts }: LayoutProps) => {
       </Parallax>
       <style jsx global>
         {`
-          body {
-            pointer-events: none;
+          @media (hover: hover) {
+            body {
+              pointer-events: none;
+            }
           }
         `}
       </style>
