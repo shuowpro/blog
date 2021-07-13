@@ -29,8 +29,7 @@ export function formatImagePath(
   )}?table=block&id=${id}&cache=v2`
 }
 
-// export const isProd = process.env.NODE_ENV === 'production'
-export const isProd = true
+export const isProd = process.env.NODE_ENV === 'production'
 
 // hack to remove undefined
 export function clean(obj: any) {
@@ -38,4 +37,15 @@ export function clean(obj: any) {
     return typeof value === 'undefined' ? null : value
   }
   return JSON.parse(JSON.stringify(obj, replacer))
+}
+
+export function throttle(func: Function, timeFrame: number) {
+  let lastTime = 0
+  return function (...args: any[]) {
+    const now = Date.now()
+    if (now - lastTime >= timeFrame) {
+      func(...args)
+      lastTime = now
+    }
+  }
 }

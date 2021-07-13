@@ -17,7 +17,7 @@ export const getBlogPostMeta = async (): Promise<PostMeta[] | undefined> => {
       cache.put('postMetas', postMetas, CACHE_EXPIRE_TIME_IN_MS)
     }
   }
-  return postMetas
+  return postMetas?.filter((postMeta) => postMeta.isPublished)
 }
 
 export const getBlogPosts = async (): Promise<Post[] | undefined> => {
