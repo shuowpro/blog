@@ -67,7 +67,7 @@ const Layout = ({ posts }: LayoutProps) => {
   })
   return (
     <div>
-      <Parallax pages={total} ref={parallax} horizontal id="parallax">
+      <Parallax pages={total} ref={parallax} id="parallax">
         {posts.map((post, index) => (
           <PageItem
             key={post.id}
