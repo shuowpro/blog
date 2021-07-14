@@ -4,6 +4,7 @@ import type { Post } from '../lib/types'
 import { getBlogPosts } from '../lib/api'
 import Layout from '../components/Layout'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 import 'react-notion/src/styles.css'
 import 'prismjs/themes/prism-tomorrow.css'
@@ -17,6 +18,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   const posts = pageProps.posts as Post[]
   return (
     <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
+      </Head>
       <Layout posts={posts}></Layout>
       <Component {...pageProps} />
     </>
