@@ -7,13 +7,13 @@ export const Nav: FC = () => {
       <Link href="/">
         <a>Logo</a>
       </Link>
-      <ul className="flex">
+      {/* <ul className="flex">
         <li>
           <Link href="/projects">
             <a className="text-blue-700 mr-2 px-2 py-1 rounded-md">项目</a>
           </Link>
         </li>
-      </ul>
+      </ul> */}
     </nav>
   )
 }
