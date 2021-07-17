@@ -1,6 +1,7 @@
 import cache from 'memory-cache'
-import { NOTION_BLOG_ID, CACHE_EXPIRE_TIME_IN_MS } from '../site.config'
-import { PostMeta, Post } from './types'
+import { OpenGraphImages } from 'next-seo/lib/types'
+import { CACHE_EXPIRE_TIME_IN_MS, NOTION_BLOG_ID } from '../site.config'
+import { Post, PostMeta } from './types'
 import { getMetaFromBlock, isProd } from './utils'
 
 export const getBlogPostMeta = async (): Promise<PostMeta[] | undefined> => {
@@ -47,3 +48,9 @@ export const getBlogPosts = async (): Promise<Post[] | undefined> => {
   }
   return posts
 }
+
+export const getOpenGraphImage = (title: string): OpenGraphImages => ({
+  url: `https://keiki.dev/api/og?title=${encodeURIComponent(title)}`,
+  width: 1200,
+  height: 630,
+})

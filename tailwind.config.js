@@ -11,6 +11,8 @@ module.exports = {
     extend: {
       spacing: {
         '2/3': '66.66666667%',
+        '1/2': '50%',
+        '1/3': '33.33333333%',
       },
       animation: {
         enter: 'enter 200ms ease-out',
