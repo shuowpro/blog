@@ -29,8 +29,8 @@ export function formatImagePath(
   )}?table=block&id=${id}&cache=v2`
 }
 
-// export const isProd = process.env.NODE_ENV === 'production'
-export const isProd = true
+export const isProd = process.env.NODE_ENV === 'production'
+// export const isProd = true
 
 // hack to remove undefined
 export function clean(obj: any) {
@@ -38,4 +38,11 @@ export function clean(obj: any) {
     return typeof value === 'undefined' ? null : value
   }
   return JSON.parse(JSON.stringify(obj, replacer))
+}
+
+export function hashCode(str: string): number {
+  return Array.from(str).reduce(
+    (s, c) => (Math.imul(31, s) + c.charCodeAt(0)) | 0,
+    0
+  )
 }

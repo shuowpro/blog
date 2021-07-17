@@ -1,31 +1,42 @@
+const { boxShadow } = require('tailwindcss/defaultTheme')
+
 module.exports = {
   purge: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './styles/**/*.{css}',
+    './pages/*.tsx',
+    './pages/**/*.tsx',
+    './components/*.tsx',
+    './components/**/*.tsx',
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+    extend: {
+      spacing: {
+        '2/3': '66.66666667%',
       },
-      screens: {
-        sm: '100%',
-        md: '100%',
-        lg: '1024px',
-        xl: '1280px',
+      animation: {
+        enter: 'enter 200ms ease-out',
+      },
+      keyframes: {
+        enter: {
+          '0%': { transform: 'scale(0.9)', opacity: 0 },
+          '100%': { transform: 'scale(1)', opacity: 1 },
+        },
       },
     },
-    extend: {},
+    container: {
+      padding: '1rem',
+      center: true,
+    },
+    boxShadow: {
+      ...boxShadow,
+      xs: '0 2px 2px rgba(0,0,0,0.02)',
+      sm: '0 4px 4px rgba(0,0,0,0.02)',
+    },
   },
   variants: {
-    extend: {},
+    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    translate: ['hover', 'focus', 'group-hover'],
+    opacity: ['hover', 'group-hover'],
+    scale: ['hover', 'group-hover'],
   },
-  plugins: [],
 }

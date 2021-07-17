@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html,
+html,
 body,
 body > div {
-  @apply text-gray-900 flex flex-col min-h-full flex-1 justify-between overflow-x-hidden;
-} */
+  @apply text-gray-900 flex flex-col min-h-full flex-1 overflow-x-hidden;
+}
 
 input,
 button,
@@ -22,6 +22,14 @@ a:focus,
 .focus:focus {
   @apply border-blue-500 outline-none;
   box-shadow: 0 0 0 3px rgba(16, 141, 255, 0.5);
+}
+
+.container {
+  @apply max-w-screen-lg;
+}
+
+.post-container {
+  @apply max-w-3xl mx-auto w-full px-4;
 }
 
 .achievement-notion .notion-text {

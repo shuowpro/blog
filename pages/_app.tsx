@@ -1,11 +1,10 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
+import Layout from '../components/Layout'
 
-import 'react-notion/src/styles.css'
-// import 'prismjs/themes/prism-tomorrow.css'
 import '../styles/globals.css'
-import '../styles/notion.css'
 import '../styles/prism.css'
+import 'react-notion/src/styles.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />
