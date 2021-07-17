@@ -47,7 +47,7 @@ const BlogPost: React.FC<{ post: Post; postViewCount?: number }> = ({
       />
       <Nav />
       <div className="my-8 w-full max-w-3xl mx-auto px-4">
-        <h1 className="text-2xl md:text-3xl font-bold sm:text-center mb-2">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold sm:text-center mb-2">
           {post.title}
         </h1>
         <div className="sm:text-center text-gray-600">

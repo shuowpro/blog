@@ -4,19 +4,26 @@ import Link from 'next/link'
 import type { Post } from '../lib/types'
 import { hashCode } from '../lib/utils'
 
-const colors = ['red', 'yellow', 'green', 'blue', 'indigo', 'purple', 'pink']
+const colors = [
+  'bg-red-200 text-red-800',
+  'bg-yellow-200 text-yellow-800',
+  'bg-green-200 text-green-800',
+  'bg-blue-200 text-blue-800',
+  'bg-indigo-200 text-indigo-800',
+  'bg-purple-200 text-purple-800',
+  'bg-pink-200 text-pink-800',
+]
 
 export const Tag: FC<{
   tag: string
 }> = ({ tag }) => {
   const color = colors[hashCode(tag) % colors.length]
-  const colorClassName = `bg-${color}-200 text-${color}-800`
 
   return (
     <div
       className={clsx(
         'rounded-full px-3 flex items-center text-sm mr-1',
-        colorClassName
+        color
       )}
     >
       {tag}
@@ -54,10 +61,10 @@ export const Tile: FC<{
         </div>
         <div className="flex flex-1 flex-col justify-between">
           <div className="p-4 pb-0">
-            <div className="font-semibold text-gray-800 group-hover:text-gray-700">
+            <div className="font-semibold text-gray-800 group-hover:text-gray-600">
               {post.title}
             </div>
-            <div className="text-gray-700">{post.description}</div>
+            <div className="text-gray-600">{post.description}</div>
           </div>
         </div>
         <div className="flex justify-between p-4">
