@@ -15,6 +15,7 @@ export async function getStaticProps() {
     props: {
       posts: clean(posts),
     },
+    revalidate: 600,
   }
 }
 
