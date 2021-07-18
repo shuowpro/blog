@@ -87,7 +87,7 @@ export const Tiles: FC<{
 }> = ({ posts, className }) => {
   return (
     <div className="container my-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 my-4">
         {posts.map((post) => (
           <Tile key={post.id} post={post} />
         ))}

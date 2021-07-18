@@ -14,6 +14,7 @@ export async function getStaticProps({
 }) {
   // Get all posts again
   const posts = await getBlogPosts()
+
   if (!posts) return {}
 
   // Find the current blogpost by slug

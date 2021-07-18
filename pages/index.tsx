@@ -20,7 +20,6 @@ export async function getStaticProps() {
 }
 
 function HomePage({ posts }: { posts: Post[] }) {
-  console.log(posts)
   return (
     <>
       <NextSeo
