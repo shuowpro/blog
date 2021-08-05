@@ -23,6 +23,7 @@ function HomePage({ posts }: { posts: Post[] }) {
   return (
     <>
       <NextSeo
+        title="色彩科学"
         openGraph={{
           images: [getOpenGraphImage('Timo Lins')],
         }}
