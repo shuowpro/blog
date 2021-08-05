@@ -5,7 +5,7 @@ export const Nav: FC = () => {
   return (
     <nav className="flex justify-between items-center my-4 container">
       <Link href="/">
-        <a>Logo</a>
+        <a className="text-2xl font-bold">色彩科学</a>
       </Link>
       {/* <ul className="flex">
         <li>
