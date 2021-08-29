@@ -30,8 +30,8 @@ export function formatImagePath(
   return `https://ssfy.io/${encodeURIComponent(imageUrl.toString())}`
 }
 
-export const isProd = process.env.NODE_ENV === 'production'
-// export const isProd = true
+// export const isProd = process.env.NODE_ENV === 'production'
+export const isProd = false
 
 // hack to remove undefined
 export function clean(obj: any) {

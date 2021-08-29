@@ -14,6 +14,7 @@ export const getBlogPostMeta = async (): Promise<PostMeta[] | undefined> => {
       `https://notion-api.splitbee.io/v1/table/${NOTION_BLOG_ID}`
     )
     postMetas = await res.json()
+    postMetas = postMetas?.filter((postMetas) => postMetas.isPublished)
     if (isProd) {
       cache.put('postMetas', postMetas, CACHE_EXPIRE_TIME_IN_MS)
     }
