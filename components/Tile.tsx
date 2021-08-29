@@ -61,13 +61,15 @@ export const Tile: FC<{
         </div>
         <div className="flex flex-1 flex-col justify-between">
           <div className="p-4 pb-0">
-            <div className="font-semibold text-gray-800 group-hover:text-gray-600">
+            <div className="font-semibold text-gray-800 group-hover:text-gray-600 text-3xl mt-2">
               {post.title}
             </div>
-            <div className="text-gray-600">{post.description}</div>
+            <div className="text-gray-600 group-hover:text-gray-400 mt-4">
+              {post.description}
+            </div>
           </div>
         </div>
-        <div className="flex justify-between p-4">
+        <div className="flex justify-between p-4 mt-2">
           <div className="flex items-center">
             {post.tags
               .filter((tag) => tag.trim())
