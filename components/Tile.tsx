@@ -16,13 +16,15 @@ const colors = [
 
 export const Tag: FC<{
   tag: string
-}> = ({ tag }) => {
+  isCenter?: boolean
+}> = ({ tag, isCenter }) => {
   const color = colors[hashCode(tag) % colors.length]
 
   return (
     <div
       className={clsx(
-        'rounded-full px-3 flex items-center text-sm mr-1',
+        'rounded-full px-3 flex items-center text-sm',
+        isCenter ? 'mx-3' : 'mr-2',
         color
       )}
     >
@@ -31,6 +33,7 @@ export const Tag: FC<{
   )
 }
 
+// TODO: try to mock https://tridiamond.tech/
 export const Tile: FC<{
   post: Post
   className?: string
@@ -45,7 +48,7 @@ export const Tile: FC<{
       <a
         className={clsx(
           'focus group border bg-white rounded-md overflow-hidden flex flex-col',
-          'transform transition-transform ease-in-out duration-100 hover:border-gray-400',
+          'transform transition-transform ease-in-out duration-300 hover:border-gray-400',
           'shadow-sm hover:-translate-y-1 focus:-translate-y-1',
           className
         )}

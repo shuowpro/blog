@@ -5,6 +5,7 @@ import { Post } from '../../lib/types'
 import { clean, dateFormatter, toNotionImageUrl } from '../../lib/utils'
 import { Nav } from '../../components/Nav'
 import { Footer } from '../../components/Footer'
+import { Tag } from '../../components/Tile'
 import { NextSeo } from 'next-seo'
 
 export async function getStaticProps({
@@ -31,6 +32,7 @@ const BlogPost: React.FC<{ post: Post; postViewCount?: number }> = ({
   postViewCount,
 }) => {
   if (!post) return null
+  console.log(post)
   return (
     <>
       <NextSeo
@@ -57,6 +59,13 @@ const BlogPost: React.FC<{ post: Post; postViewCount?: number }> = ({
           </time>
           <span className="text-gray-400"> / </span>
           <span>{postViewCount || '...'}</span>
+        </div>
+        <div className="flex justify-center items-center mt-6">
+          {post.tags
+            .filter((tag) => tag.trim())
+            .map((tag) => (
+              <Tag key={tag} tag={tag} isCenter />
+            ))}
         </div>
       </div>
       <div className="pb-2/3 sm:pb-1/3 bg-gray-100 relative overflow-hidden mb-12">

@@ -29,12 +29,14 @@ export const getBlogPosts = async (): Promise<Post[] | undefined> => {
   }
   if (!posts) {
     const postMetas = await getBlogPostMeta()
+    console.log(postMetas)
     if (!postMetas) return undefined
     posts = await Promise.all(
       postMetas.map((postMeta) => {
         return fetch(`https://notion-api.splitbee.io/v1/page/${postMeta.id}`)
           .then((res) => res.json())
           .then((res) => {
+            console.log(res)
             return {
               ...postMeta,
               block: res,
