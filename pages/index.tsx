@@ -28,7 +28,6 @@ function HomePage({ posts }: { posts: Post[] }) {
           images: [getOpenGraphImage('Timo Lins')],
         }}
       />
-      <Nav />
       <Tiles posts={posts} />
       <Footer />
     </>

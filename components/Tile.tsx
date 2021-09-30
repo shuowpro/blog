@@ -48,15 +48,15 @@ export const Tile: FC<{
       <a
         className={clsx(
           'focus group border bg-white rounded-md overflow-hidden flex flex-col',
-          'transform transition-transform ease-in-out duration-300 hover:border-gray-400',
-          'shadow-sm hover:scale-105 focus:scale-105',
+          'hover:border-gray-400',
+          'shadow-sm',
           className
         )}
       >
         <div className="pb-2/3 bg-gray-100 relative border-b overflow-hidden">
           {post.pageCover && (
             <img
-              className="absolute w-full h-full object-cover"
+              className="transform-gpu transition-transform ease-in-out duration-300 absolute w-full h-full object-cover group-hover:scale-110"
               src={post.pageCover}
               alt={post.title}
             />
