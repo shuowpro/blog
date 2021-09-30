@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *:focus {
-  outline: none !important;
+  @apply outline-none;
 }
 
 html,
@@ -12,21 +12,13 @@ body > div {
   @apply text-gray-900 flex flex-col min-h-full flex-1 overflow-x-hidden;
 }
 
-input,
+/* input,
 button,
 a {
   box-shadow: 0 0 0 0 rgba(16, 141, 255, 0.1);
   transition: ease-in-out 80ms;
   transition-property: box-shadow, background;
-}
-
-input:focus,
-button:focus,
-a:focus,
-.focus:focus {
-  @apply border-blue-500 outline-none;
-  box-shadow: 0 0 0 3px rgba(16, 141, 255, 0.5);
-}
+} */
 
 .container {
   @apply max-w-screen-lg;

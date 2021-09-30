@@ -49,7 +49,7 @@ export const Tile: FC<{
         className={clsx(
           'focus group border bg-white rounded-md overflow-hidden flex flex-col',
           'transform transition-transform ease-in-out duration-300 hover:border-gray-400',
-          'shadow-sm hover:-translate-y-1 focus:-translate-y-1',
+          'shadow-sm hover:scale-105 focus:scale-105',
           className
         )}
       >
