@@ -81,7 +81,7 @@ export async function getStaticPaths() {
 
   return {
     paths: metas.map((meta) => `/post/${encodeURIComponent(meta.title)}`),
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 
