@@ -1,55 +1,34 @@
-import cache from 'memory-cache'
 import { OpenGraphImages } from 'next-seo/lib/types'
-import { CACHE_EXPIRE_TIME_IN_MS, NOTION_BLOG_ID } from '../site.config'
+import { NOTION_BLOG_ID } from '../site.config'
 import { Post, PostMeta } from './types'
-import { getMetaFromBlock, isProd } from './utils'
 
-export const getBlogPostMeta = async (): Promise<PostMeta[] | undefined> => {
-  let postMetas: PostMeta[] | undefined = undefined
-  if (isProd) {
-    postMetas = cache.get('postMetas')
-  }
-  if (!postMetas) {
-    const res = await fetch(
-      `https://notion-api.splitbee.io/v1/table/${NOTION_BLOG_ID}`
-    )
-    postMetas = await res.json()
-    postMetas = postMetas?.filter((postMetas) => postMetas.isPublished)
-    if (isProd) {
-      cache.put('postMetas', postMetas, CACHE_EXPIRE_TIME_IN_MS)
-    }
-  }
-  return postMetas
+export const getBlogPostMeta = async (): Promise<PostMeta[]> => {
+  const res = await fetch(
+    `https://notion-api.splitbee.io/v1/table/${NOTION_BLOG_ID}`
+  )
+
+  let metas: PostMeta[] = await res.json()
+
+  metas = metas.filter((meta) => meta.isPublished && meta.createdTime)
+
+  metas.sort((m1, m2) => {
+    const t1 = Date.parse(m1.createdTime)
+    const t2 = Date.parse(m2.createdTime)
+    return t2 - t1
+  })
+
+  return metas
 }
 
-export const getBlogPosts = async (): Promise<Post[] | undefined> => {
-  let posts: Post[] | undefined = undefined
-  if (isProd) {
-    posts = cache.get('posts')
+export const getBlogPost = async (meta: PostMeta): Promise<Post> => {
+  const res = await fetch(`https://notion-api.splitbee.io/v1/page/${meta.id}`)
+
+  const post = await res.json()
+
+  return {
+    ...meta,
+    block: post,
   }
-  if (!posts) {
-    const postMetas = await getBlogPostMeta()
-    console.log(postMetas)
-    if (!postMetas) return undefined
-    posts = await Promise.all(
-      postMetas.map((postMeta) => {
-        return fetch(`https://notion-api.splitbee.io/v1/page/${postMeta.id}`)
-          .then((res) => res.json())
-          .then((res) => {
-            console.log(res)
-            return {
-              ...postMeta,
-              block: res,
-              ...getMetaFromBlock(res, postMeta.id),
-            }
-          })
-      })
-    )
-    if (isProd) {
-      cache.put('posts', posts, CACHE_EXPIRE_TIME_IN_MS)
-    }
-  }
-  return posts
 }
 
 export const getOpenGraphImage = (title: string): OpenGraphImages => ({

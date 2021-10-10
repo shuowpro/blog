@@ -9,7 +9,12 @@
 html,
 body,
 body > div {
-  @apply text-gray-900 flex flex-col min-h-full flex-1 overflow-x-hidden;
+  @apply text-gray-800 flex flex-col min-h-full flex-1 overflow-x-hidden;
+}
+
+button,
+a {
+  @apply text-blue-600;
 }
 
 /* input,
@@ -40,4 +45,29 @@ a {
 .notion-asset-wrapper img,
 .notion-asset-wrapper iframe {
   @apply overflow-hidden rounded;
+}
+
+.layout-transition-enter {
+  opacity: 0;
+  transform: translateY(-5rem);
+}
+
+.layout-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.layout-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.layout-transition-exit-active {
+  opacity: 0;
+  transform: translateY(5rem);
+}
+
+.layout-transition-enter-active,
+.layout-transition-exit-active {
+  transition: opacity 300ms, transform 300ms;
 }

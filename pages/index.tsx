@@ -1,25 +1,21 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { getBlogPosts, getOpenGraphImage } from '../lib/api'
-import type { Post } from '../lib/types'
+import { getBlogPostMeta, getOpenGraphImage } from '../lib/api'
+import type { PostMeta } from '../lib/types'
 import { clean } from '../lib/utils'
-import { Tiles } from '../components/Tile'
-import { Nav } from '../components/Nav'
-import { Footer } from '../components/Footer'
+import { PostLinks } from '../components/PostLink'
 import { NextSeo } from 'next-seo'
 
 export async function getStaticProps() {
-  const posts = await getBlogPosts()
-  if (!posts) return {}
+  const metas = await getBlogPostMeta()
   return {
     props: {
-      posts: clean(posts),
+      metas: clean(metas),
     },
     revalidate: 600,
   }
 }
 
-function HomePage({ posts }: { posts: Post[] }) {
+function HomePage({ metas }: { metas: PostMeta[] }) {
+  if (!metas) return null
   return (
     <>
       <NextSeo
@@ -28,8 +24,9 @@ function HomePage({ posts }: { posts: Post[] }) {
           images: [getOpenGraphImage('Timo Lins')],
         }}
       />
-      <Tiles posts={posts} />
-      <Footer />
+      <main className="post-container my-6 flex-1">
+        <PostLinks posts={metas} />
+      </main>
     </>
   )
 }

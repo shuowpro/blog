@@ -3,9 +3,8 @@ import { BlockMapType } from 'react-notion'
 export interface PostMeta {
   id: string
   isPublished: boolean
-  tags: [string]
   title: string
-  description: string
+  createdTime: string
 }
 
 export interface MetaDataFromBlock {
@@ -16,6 +15,6 @@ export interface MetaDataFromBlock {
   createdTime: number
 }
 
-export interface Post extends PostMeta, MetaDataFromBlock {
+export interface Post extends PostMeta {
   block: BlockMapType
 }

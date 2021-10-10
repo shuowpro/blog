@@ -1,6 +1,7 @@
 const { boxShadow } = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  darkMode: 'media',
   purge: [
     './pages/*.tsx',
     './pages/**/*.tsx',

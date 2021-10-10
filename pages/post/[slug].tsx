@@ -1,11 +1,7 @@
-import Image from 'next/image'
 import { NotionRenderer } from 'react-notion'
-import { getBlogPostMeta, getBlogPosts, getOpenGraphImage } from '../../lib/api'
+import { getBlogPostMeta, getBlogPost, getOpenGraphImage } from '../../lib/api'
 import { Post } from '../../lib/types'
 import { clean, dateFormatter, toNotionImageUrl } from '../../lib/utils'
-import { Nav } from '../../components/Nav'
-import { Footer } from '../../components/Footer'
-import { Tag } from '../../components/Tile'
 import { NextSeo } from 'next-seo'
 
 export async function getStaticProps({
@@ -13,16 +9,33 @@ export async function getStaticProps({
 }: {
   params: { slug: string }
 }) {
-  // Get all posts again
-  const posts = await getBlogPosts()
-
-  if (!posts) return {}
+  // Find the metas
+  const metas = await getBlogPostMeta()
 
   // Find the current blogpost by slug
-  const post = posts.find((post) => encodeURIComponent(post.title) === slug)
+  const currentMeta = metas.find(
+    (meta) => encodeURIComponent(meta.title) === slug
+  )
+
+  // Should not happened
+  if (!currentMeta) {
+    return {
+      notFound: true,
+    }
+  }
+
+  const post = await getBlogPost(currentMeta)
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
-    props: { post: clean(post) },
+    props: {
+      post: clean(post),
+    },
     revalidate: 600,
   }
 }
@@ -31,65 +44,43 @@ const BlogPost: React.FC<{ post: Post; postViewCount?: number }> = ({
   post,
   postViewCount,
 }) => {
+  // Two steps of async call, so it could return null.
   if (!post) return null
+
   return (
-    <>
+    <main className="flex-1">
       <NextSeo
         title={post.title}
-        description={post.description}
         canonical={`https://keiki.dev/post/${encodeURIComponent(post.title)}`}
         openGraph={{
           type: 'article',
-          images: [getOpenGraphImage(post.title)],
+          images: [getOpenGraphImage(encodeURIComponent(post.title))],
           article: {
             publishedTime: new Date(post.createdTime).toISOString(),
-            tags: post.tags,
           },
         }}
       />
-      <div className="my-8 w-full max-w-3xl mx-auto px-4">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold sm:text-center mb-2">
-          {post.title}
-        </h1>
-        <div className="sm:text-center text-gray-600">
-          <time dateTime={new Date(post.createdTime).toISOString()}>
-            {dateFormatter.format(new Date(post.createdTime))}
-          </time>
-          <span className="text-gray-400"> / </span>
-          <span>{postViewCount || '...'}</span>
-        </div>
-        <div className="flex justify-center items-center mt-6">
-          {post.tags
-            .filter((tag) => tag.trim())
-            .map((tag) => (
-              <Tag key={tag} tag={tag} isCenter />
-            ))}
-        </div>
-      </div>
-      <div className="pb-2/3 sm:pb-1/3 bg-gray-100 relative overflow-hidden mb-12">
-        {post.pageCover && (
-          <img
-            className="absolute w-full h-full object-cover"
-            src={post.pageCover}
-            alt={post.title}
-          />
-        )}
-      </div>
-      <article className="flex-1 my-6 post-container">
+      <section className="post-container mt-10">
+        <h1 className="text-4xl">{post.title}</h1>
+        <time
+          className="block mt-4 text-sm text-gray-400"
+          dateTime={new Date(post.createdTime).toISOString()}
+        >
+          {dateFormatter.format(new Date(post.createdTime))}
+        </time>
+      </section>
+      <article className="my-6 post-container">
         <NotionRenderer blockMap={post.block} mapImageUrl={toNotionImageUrl} />
       </article>
-      <Footer />
-    </>
+    </main>
   )
 }
 
 export async function getStaticPaths() {
-  const postMetas = await getBlogPostMeta()
-  if (!postMetas) return {}
+  const metas = await getBlogPostMeta()
+
   return {
-    paths: postMetas.map(
-      (postMeta) => `/post/${encodeURIComponent(postMeta.title)}`
-    ),
+    paths: metas.map((meta) => `/post/${encodeURIComponent(meta.title)}`),
     fallback: true,
   }
 }
