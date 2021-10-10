@@ -35,11 +35,4 @@ module.exports = {
       sm: '0 4px 4px rgba(0,0,0,0.02)',
     },
   },
-  variants: {
-    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    translate: ['hover', 'focus', 'group-hover'],
-    opacity: ['hover', 'group-hover'],
-    scale: ['hover', 'group-hover'],
-  },
 }

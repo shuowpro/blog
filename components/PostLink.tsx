@@ -22,7 +22,7 @@ export const PostLink: FC<{
   return (
     <li className="my-10">
       <time
-        className="text-gray-400 block"
+        className="text-gray-400 block dark:text-gray-200"
         dateTime={new Date(meta.createdTime).toISOString()}
       >
         {dateFormatter.format(new Date(meta.createdTime))}
