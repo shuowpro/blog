@@ -61,7 +61,7 @@ const BlogPost: React.FC<{ post: Post; postViewCount?: number }> = ({
         }}
       />
       <section className="post-container mt-10">
-        <h1 className="text-4xl">{post.title}</h1>
+        <h1 className="text-3xl md:text-4xl">{post.title}</h1>
         <time
           className="block mt-4 text-sm text-gray-400"
           dateTime={new Date(post.createdTime).toISOString()}

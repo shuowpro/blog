@@ -6,6 +6,11 @@
   @apply outline-none;
 }
 
+/* prevent scroll bar to make element shift */
+html {
+  overflow-y: overlay;
+}
+
 html,
 body,
 body > div {
