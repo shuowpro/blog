@@ -1,3 +1,4 @@
+import { Giscus } from '@giscus/react'
 import { NotionRenderer } from 'react-notion'
 import { getBlogPostMeta, getBlogPost, getOpenGraphImage } from '../../lib/api'
 import { Post } from '../../lib/types'
@@ -72,6 +73,18 @@ const BlogPost: React.FC<{ post: Post; postViewCount?: number }> = ({
       <article className="my-6 post-container">
         <NotionRenderer blockMap={post.block} mapImageUrl={toNotionImageUrl} />
       </article>
+      <section className="post-container">
+        <Giscus
+          repo="leuction/blog"
+          repoId="MDEwOlJlcG9zaXRvcnkzODQ3NDUwNjQ="
+          category="Announcements"
+          categoryId="DIC_kwDOFu6-aM4CAXex"
+          mapping="title"
+          reactionsEnabled="1"
+          emitMetadata="0"
+          theme="preferred_color_scheme"
+        />
+      </section>
     </main>
   )
 }
