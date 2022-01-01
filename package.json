@@ -1,39 +1,34 @@
 {
-  "name": "blog",
+  "name": "nextjs-prism-markdown",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "@giscus/react": "^1.0.1",
-    "clsx": "^1.1.1",
-    "memory-cache": "^0.2.0",
-    "next": "^11.1.0",
-    "next-seo": "^4.26.0",
-    "playwright-aws-lambda": "^0.7.0",
-    "playwright-core": "^1.12.3",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-icons": "^4.3.1",
-    "react-masonry-css": "^1.0.16",
-    "react-notion": "^0.9.3",
-    "react-transition-group": "^4.4.2"
+    "classnames": "^2.3.1",
+    "dayjs": "^1.10.7",
+    "next": "^12.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-transition-group": "^4.4.2",
+    "truncate-html": "^1.0.4"
   },
   "devDependencies": {
-    "@types/memory-cache": "^0.2.1",
-    "@types/node": "^16.3.1",
-    "@types/react": "17.0.14",
-    "@types/react-dom": "^17.0.9",
-    "@types/react-transition-group": "^4.4.3",
-    "autoprefixer": "^10.3.0",
-    "eslint": "7.30.0",
-    "eslint-config-next": "11.0.1",
-    "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.4",
-    "typescript": "4.3.5"
+    "@tailwindcss/typography": "^0.5.0",
+    "autoprefixer": "^10.4.1",
+    "gray-matter": "^4.0.2",
+    "remark": "^13.0.2",
+    "remark-html": "^13.0.1",
+    "remark-prism": "^1.1.14",
+    "tailwindcss": "^3.0.8"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none"
   }
 }
