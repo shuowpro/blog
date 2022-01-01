@@ -3,8 +3,9 @@ import Article from '~/components/Article';
 import Title from '~/components/Title';
 import { getAllDocs, getDocBySlug } from '~/lib/docs';
 import markdownToHtml from '~/lib/markdown';
+import { getReadTime } from '~/lib/utils';
 
-export default function Doc({ meta, content }) {
+export default function Doc({ meta, content, readTime }) {
   return (
     <>
       <Head>
@@ -21,7 +22,7 @@ export default function Doc({ meta, content }) {
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={meta.cardImage} />
       </Head>
-      <Title meta={meta} className="mt-16" />
+      <Title meta={meta} readTime={readTime} className="mt-16" />
       <Article content={content} />
     </>
   );
@@ -29,12 +30,14 @@ export default function Doc({ meta, content }) {
 
 export async function getStaticProps({ params }) {
   const doc = getDocBySlug(params.slug);
+  const readTime = getReadTime(doc.content);
   const content = await markdownToHtml(doc.content || '');
 
   return {
     props: {
       ...doc,
-      content
+      content,
+      readTime
     }
   };
 }

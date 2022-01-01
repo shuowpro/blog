@@ -6,7 +6,7 @@ import localizedFormat from 'dayjs/plugin/localizedFormat';
 
 dayjs.extend(localizedFormat);
 
-export default function Title({ meta, className }) {
+export default function Title({ meta, className, readTime }) {
   return (
     meta && (
       <section className={cx('w-full', className)}>
@@ -22,12 +22,12 @@ export default function Title({ meta, className }) {
             <h1 className="text-center text-xl">{meta.description}</h1>
           </div>
         )}
-        {meta.date && (
-          <div className="w-full mx-auto text-center mt-4">
-            <time>{dayjs(meta.date).locale('zh-cn').format('LL')}</time>
-            <span> · 阅读时间4分钟</span>
-          </div>
-        )}
+        <div className="w-full mx-auto text-center mt-4">
+          {meta.date && (
+            <time>{`${dayjs(meta.date).locale('zh-cn').format('LL')} · `}</time>
+          )}
+          <span>{`阅读时间${readTime}分钟`}</span>
+        </div>
         {meta.cover && (
           <div className="w-full aspect-square md:aspect-video lg:aspect-5/2 relative mt-10">
             <Image

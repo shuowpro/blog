@@ -6,6 +6,7 @@ import Title from '~/components/Title';
 import { getAllDocs, getDocBySlug } from '~/lib/docs';
 import markdownToHtml from '~/lib/markdown';
 import truncate from 'truncate-html';
+import { getReadTime } from '~/lib/utils';
 
 export default function Index({ docs }) {
   return (
@@ -28,7 +29,11 @@ export default function Index({ docs }) {
         {docs.map((doc) => (
           <Link href={`/${doc.slug}`} key={doc.slug}>
             <section className="h-auto max-w-4xl mx-auto cursor-pointer">
-              <Title meta={doc.meta} className="mt-16" />
+              <Title
+                meta={doc.meta}
+                readTime={doc.readTime}
+                className="mt-16"
+              />
 
               <Article
                 content={doc.content}
@@ -47,6 +52,7 @@ export async function getStaticProps() {
   const res = [];
   for (const doc of docs) {
     try {
+      doc.readTime = getReadTime(doc.content);
       doc.content = await markdownToHtml(doc.content || '');
       doc.content = truncate(doc.content, 50, { byWords: true });
       res.push(doc);
