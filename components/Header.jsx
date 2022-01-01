@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import siteMeta from '../site.config';
+import Gravatar from 'react-gravatar';
 
 export default function Header() {
   return (
@@ -8,13 +9,21 @@ export default function Header() {
         <div className="py-4 border-b border-stone-900/10 lg:px-8 lg:border-0 mx-4">
           <div className="relative flex items-center">
             <Link href="/">
-              <span className="cursor-pointer">{siteMeta.title}</span>
+              <div className="flex items-center">
+                <Gravatar
+                  className="cursor-pointer inline-block rounded-full w-6 h-6"
+                  email={siteMeta.email}
+                  height={24}
+                  width={24}
+                />
+                <span className="cursor-pointer ml-2">{siteMeta.title}</span>
+              </div>
             </Link>
             <div className="relative lg:flex items-center ml-auto">
               <div className="flex items-center">
                 <Link href="https://github.com/leuction">
                   <svg
-                    className="w-5 h-5 cursor-pointer"
+                    className="w-6 h-6 cursor-pointer"
                     xmlns="http://www.w3.org/2000/svg"
                     x="0px"
                     y="0px"
