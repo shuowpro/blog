@@ -28,7 +28,7 @@ export default function Index({ docs }) {
       <div className="divide-y divide-stone-300">
         {docs.map((doc) => (
           <Link href={`/${doc.slug}`} key={doc.slug}>
-            <section className="h-auto max-w-4xl mx-auto cursor-pointer">
+            <section className="h-auto max-w-2xl mx-auto cursor-pointer">
               <Title
                 meta={doc.meta}
                 readTime={doc.readTime}

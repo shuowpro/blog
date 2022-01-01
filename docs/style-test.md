@@ -3,6 +3,7 @@ title: 样式测试
 description: 非常简单的样式
 date: "2018-02-17"
 cover: https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg
+draft: false
 ---
 
 # Editor.md
