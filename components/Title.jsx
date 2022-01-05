@@ -11,14 +11,14 @@ export default function Title({ meta, className, readTime }) {
     meta && (
       <section className={cx('w-full', className)}>
         {meta.title && (
-          <div className="w-full text-stone-700">
+          <div className="w-full text-stone-800">
             <h1 className="tracking-wider text-center text-5xl font-black">
               {meta.title}
             </h1>
           </div>
         )}
         {meta.description && (
-          <div className="w-full text-stone-400 mt-2">
+          <div className="w-full text-stone-500 mt-2">
             <h1 className="text-center text-xl">{meta.description}</h1>
           </div>
         )}
