@@ -1,6 +1,3 @@
-import Head from 'next/head';
-import siteMeta from '../site.config';
-import Header from './Header';
 import cx from 'classnames';
 
 export default function Article({ content, className }) {

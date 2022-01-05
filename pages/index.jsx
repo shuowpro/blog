@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import Head from 'next/head';
-import Layout from '~/components/Layout';
 import Article from '~/components/Article';
 import Title from '~/components/Title';
 import { getAllDocs, getDocBySlug } from '~/lib/docs';

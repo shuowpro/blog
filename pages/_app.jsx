@@ -1,5 +1,4 @@
 import '../styles/globals.css';
-import Layout from '~/components/Layout';
 import Header from '~/components/Header';
 import Head from 'next/head';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';

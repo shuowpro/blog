@@ -182,7 +182,7 @@ testBox.add("jQuery").remove("jQuery");
 <!DOCTYPE html>
 <html>
     <head>
-        <mate charest="utf-8" />
+        <meta charest="utf-8" />
         <meta name="keywords" content="Editor.md, Markdown, Editor" />
         <title>Hello world!</title>
         <style type="text/css">
