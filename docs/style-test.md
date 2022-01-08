@@ -3,11 +3,10 @@ title: 样式测试
 description: 非常简单的样式
 date: "2018-02-17"
 cover: https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg
-draft: false
+draft: true
 ---
 
 # Editor.md
-
 
 <a href="https://oschina.net">hhh</a>
 
@@ -37,7 +36,6 @@ d
 
 --
 
-
 ![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
 
 ![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg)
@@ -49,16 +47,27 @@ d
 [TOC]
 
 # Heading 1
+
 ## Heading 2
+
 ### Heading 3
+
 #### Heading 4
+
 ##### Heading 5
+
 ###### Heading 6
+
 # Heading 1 link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 ## Heading 2 link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 ### Heading 3 link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 #### Heading 4 link [Heading link](https://github.com/pandao/editor.md "Heading link") Heading link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 ##### Heading 5 link [Heading link](https://github.com/pandao/editor.md "Heading link")
+
 ###### Heading 6 link [Heading link](https://github.com/pandao/editor.md "Heading link")
 
 #### 标题（用底线的形式）Heading (underline)
@@ -135,11 +144,11 @@ GFM a-tail link [@pandao](https://my.oschina.net/u/3691274)  邮箱地址自动�
     | Content Cell  | Content Cell  |
     | Content Cell  | Content Cell  |
 
-#### JS代码　
+#### JS代码
 
 ```javascript
 function test() {
-	console.log("Hello world!");
+    console.log("Hello world!");
 }
 
 (function(){
@@ -151,20 +160,20 @@ function test() {
         init : function(){
             console.log('box.init()');
 
-			return this;
+            return this;
         },
 
-		add : function(str) {
-			alert("add", str);
+        add : function(str) {
+            alert("add", str);
 
-			return this;
-		},
+            return this;
+        },
 
-		remove : function(str) {
-			alert("remove", str);
+        remove : function(str) {
+            alert("remove", str);
 
-			return this;
-		}
+            return this;
+        }
     };
 
     box.fn.init.prototype = box.fn;
@@ -236,13 +245,13 @@ Image:
 
 + 列表一
 + 列表二
-    + 列表二-1
-    + 列表二-2
-    + 列表二-3
+  + 列表二-1
+  + 列表二-2
+  + 列表二-3
 + 列表三
-    * 列表一
-    * 列表二
-    * 列表三
+  * 列表一
+  * 列表二
+  * 列表三
 
 #### 有序列表 Ordered Lists (-)
 
@@ -255,49 +264,49 @@ Image:
 - [x] GFM task list 1
 - [x] GFM task list 2
 - [ ] GFM task list 3
-    - [ ] GFM task list 3-1
-    - [ ] GFM task list 3-2
-    - [ ] GFM task list 3-3
+  - [ ] GFM task list 3-1
+  - [ ] GFM task list 3-2
+  - [ ] GFM task list 3-3
 - [ ] GFM task list 4
-    - [ ] GFM task list 4-1
-    - [ ] GFM task list 4-2
+  - [ ] GFM task list 4-1
+  - [ ] GFM task list 4-2
 
 ----
 
 ### 绘制表格 Tables
 
-| 项目        | 价格   |  数量  |
-| --------   | -----:  | :----:  |
-| 计算机      | $1600   |   5     |
-| 手机        |   $12   |   12   |
-| 管线        |    $1    |  234  |
+| 项目  | 价格    | 数量  |
+| --- | -----:|:---:|
+| 计算机 | $1600 | 5   |
+| 手机  | $12   | 12  |
+| 管线  | $1    | 234 |
 
-First Header  | Second Header
-------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+| First Header | Second Header |
+| ------------ | ------------- |
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| First Header | Second Header |
+| ------------ | ------------- |
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
 
-| Function name | Description                    |
-| ------------- | ------------------------------ |
-| `help()`      | Display the help window.       |
-| `destroy()`   | **Destroy your computer!**     |
+| Function name | Description                |
+| ------------- | -------------------------- |
+| `help()`      | Display the help window.   |
+| `destroy()`   | **Destroy your computer!** |
 
 | Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
+|:------------- |:---------------:| -------------:|
+| col 3 is      | some wordy text | $1600         |
+| col 2 is      | centered        | $12           |
+| zebra stripes | are neat        | $1            |
 
-| Item      | Value |
-| --------- | -----:|
-| Computer  | $1600 |
-| Phone     |   $12 |
-| Pipe      |    $1 |
+| Item     | Value |
+| -------- | -----:|
+| Computer | $1600 |
+| Phone    | $12   |
+| Pipe     | $1    |
 
 ----
 
@@ -323,8 +332,8 @@ X&sup2; Y&sup3; &frac34; &frac14;  &times;  &divide;   &raquo;
 - [x] [ ] :smiley: this is a complete item :smiley:;
 - [ ] []this is an incomplete item [test link](#) :fa-star: @pandao;
 - [ ] [ ]this is an incomplete item :fa-star: :fa-gear:;
-    - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
-    - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
+  - [ ] :smiley: this is an incomplete item [test link](#) :fa-star: :fa-gear:;
+  - [ ] :smiley: this is  :fa-star: :fa-gear: an incomplete item [test link](#);
 
 #### 反斜杠 Escape
 

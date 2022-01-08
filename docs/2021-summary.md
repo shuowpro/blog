@@ -1,9 +1,9 @@
 ---
 title: 2021年终总结
-description:
+description: 
 date: '2021-12-31'
 cover: https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg
 draft: true
 ---
 
-正如同2020年一样，因为疫情，2021年也同样的呆在了家里，几乎无所事事
+2021年
