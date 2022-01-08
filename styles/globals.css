@@ -2,56 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-*:focus {
-  @apply outline-none;
-}
-
-/* prevent scroll bar to make element shift */
-html {
-  overflow-y: overlay;
-}
-
-html,
-body,
-body > div {
-  @apply text-gray-800 flex flex-col min-h-full flex-1 overflow-x-hidden;
-}
-
-button,
-a {
-  @apply text-blue-600;
-}
-
-/* input,
-button,
-a {
-  box-shadow: 0 0 0 0 rgba(16, 141, 255, 0.1);
-  transition: ease-in-out 80ms;
-  transition-property: box-shadow, background;
-} */
-
-.container {
-  @apply max-w-screen-lg;
-}
-
-.post-container {
-  @apply max-w-3xl mx-auto w-full px-4;
-}
-
-.achievement-notion .notion-text {
-  @apply text-gray-600 pl-0;
-}
-
-.achievement-notion .notion-link,
-.achievement-notion .notion-text {
-  @apply break-normal;
-}
-
-.notion-asset-wrapper img,
-.notion-asset-wrapper iframe {
-  @apply overflow-hidden rounded;
-}
-
 .layout-transition-enter {
   opacity: 0;
   transform: translateY(-5rem);
@@ -75,44 +25,4 @@ a {
 .layout-transition-enter-active,
 .layout-transition-exit-active {
   transition: opacity 300ms, transform 300ms;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    @apply bg-black;
-  }
-  button,
-  a,
-  .notion-page-link {
-    @apply text-blue-400;
-  }
-  html,
-  body,
-  body > div,
-  .notion-text,
-  .notion {
-    @apply text-gray-200;
-  }
-  .notion-bookmark > div:first-child,
-  .notion-bookmark-link > div {
-    @apply text-gray-900;
-  }
-  .notion-bookmark {
-    @apply bg-gray-300;
-  }
-  .notion-callout {
-    @apply border-gray-300 text-gray-300;
-  }
-
-  .notion-red_background,
-  .notion-pink_background,
-  .notion-blue_background,
-  .notion-purple_background,
-  .notion-teal_background,
-  .notion-yellow_background,
-  .notion-orange_background,
-  .notion-brown_background,
-  .notion-gray_background {
-    @apply text-gray-800;
-  }
 }
