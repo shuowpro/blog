@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Article from '~/components/Article';
 import Title from '~/components/Title';
+import Comment from '~/components/Comment';
 import { getAllDocs, getDocBySlug } from '~/lib/docs';
 import markdownToHtml from '~/lib/markdown';
 import { getReadTime } from '~/lib/utils';
@@ -24,6 +25,7 @@ export default function Doc({ meta, content, readTime }) {
       </Head>
       <Title meta={meta} readTime={readTime} className="mt-16" />
       <Article content={content} />
+      <Comment />
     </>
   );
 }

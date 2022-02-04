@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@giscus/react": "^1.1.1",
     "@types/classnames": "^2.3.1",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",

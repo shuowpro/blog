@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ['cdn.pixabay.com']
+    domains: ['github.com']
   },
   future: {
     webpack5: true
