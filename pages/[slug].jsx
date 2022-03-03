@@ -5,6 +5,8 @@ import Comment from '~/components/Comment';
 import { getAllDocs, getDocBySlug } from '~/lib/docs';
 import markdownToHtml from '~/lib/markdown';
 import { getReadTime } from '~/lib/utils';
+import Gravatar from 'react-gravatar';
+import siteMeta from '../site.config';
 
 export default function Doc({ meta, content, readTime }) {
   return (
@@ -24,6 +26,13 @@ export default function Doc({ meta, content, readTime }) {
         <meta name="twitter:image" content={meta.cardImage} />
       </Head>
       <Title meta={meta} readTime={readTime} className="mt-16" />
+      <div className="w-full mx-auto flex justify-center items-center mt-6">
+        <Gravatar
+          className="cursor-pointer inline-block rounded-full w-24 h-24 outline outline-offset-2 outline-slate-500"
+          email={siteMeta.email}
+          size={100}
+        />
+      </div>
       <Article content={content} />
       <Comment />
     </>
