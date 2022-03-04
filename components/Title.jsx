@@ -9,10 +9,10 @@ dayjs.extend(localizedFormat);
 export default function Title({ meta, className, readTime }) {
   return (
     meta && (
-      <section className={cx('w-full', className)}>
+      <section className={cx('w-full px-4 md:px-8', className)}>
         {meta.title && (
           <div className="w-full text-stone-800">
-            <h1 className="tracking-wider text-center text-5xl font-black">
+            <h1 className="tracking-wider text-center text-3xl md:text-5xl font-black">
               {meta.title}
             </h1>
           </div>

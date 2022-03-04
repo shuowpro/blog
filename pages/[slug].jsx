@@ -28,7 +28,8 @@ export default function Doc({ meta, content, readTime }) {
       <Title meta={meta} readTime={readTime} className="mt-16" />
       <div className="w-full mx-auto flex justify-center items-center mt-6">
         <Gravatar
-          className="cursor-pointer inline-block rounded-full w-24 h-24 outline outline-offset-2 outline-slate-500"
+          className="inline-block rounded-full w-16 h-16 md:w-24 md:h-24 border-2 border-slate-500"
+          // outline outline-offset-2 outline-slate-500
           email={siteMeta.email}
           size={100}
         />

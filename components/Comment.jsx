@@ -2,7 +2,7 @@ import { Giscus } from '@giscus/react';
 
 export default function Article({ content, className }) {
   return (
-    <section className="max-w-prose mx-auto mt-4 mb-32">
+    <section className="max-w-prose mx-auto mt-4 mb-32 px-4">
       <Giscus
         repo="leuction/blog"
         repoId="MDEwOlJlcG9zaXRvcnkzODQ3NDUwNjQ="
