@@ -1,0 +1,101 @@
+{
+  "main": {
+    "id": "b441f2f9db5837a2",
+    "type": "split",
+    "children": [
+      {
+        "id": "f63c61afc42ef912",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "best-account-system.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "200cb5bef9c79892",
+    "type": "split",
+    "children": [
+      {
+        "id": "e6ee9ad15dcdb660",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "11a6b7f6da92cc61",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "c30c7919e660d015",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 237
+  },
+  "right": {
+    "id": "57a49af6b8c46c73",
+    "type": "split",
+    "children": [
+      {
+        "id": "2057588179e70f4e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "048a3dac6d957424",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "best-account-system.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "f63c61afc42ef912",
+  "lastOpenFiles": [
+    "best-account-system.md",
+    "type-system.md",
+    "thought-about-upcoming-xr.md",
+    "the-paradox-of-popularity.md",
+    "style-test.md",
+    "prism.md",
+    "design-pattern-in-rust-new-type.md",
+    "2021-summary.md"
+  ]
+}

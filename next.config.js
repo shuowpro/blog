@@ -1,6 +1,6 @@
 module.exports = {
   images: {
-    domains: ['github.com']
+    domains: ['github.com', 'sm.ms']
   },
   future: {
     webpack5: true
