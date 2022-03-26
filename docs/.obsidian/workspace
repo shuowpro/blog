@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "best-account-system.md",
+            "file": "type-system.md",
             "mode": "source",
             "source": false
           }
@@ -53,7 +53,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237
+    "width": 237,
+    "collapsed": true
   },
   "right": {
     "id": "57a49af6b8c46c73",
@@ -69,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "best-account-system.md",
+                "file": "type-system.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -89,10 +90,10 @@
   },
   "active": "f63c61afc42ef912",
   "lastOpenFiles": [
-    "best-account-system.md",
     "type-system.md",
     "thought-about-upcoming-xr.md",
     "the-paradox-of-popularity.md",
+    "best-account-system.md",
     "style-test.md",
     "prism.md",
     "design-pattern-in-rust-new-type.md",
