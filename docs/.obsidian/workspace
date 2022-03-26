@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "type-system.md",
+            "file": "style-test.md",
             "mode": "source",
             "source": false
           }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "type-system.md",
+                "file": "style-test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,11 +90,11 @@
   },
   "active": "f63c61afc42ef912",
   "lastOpenFiles": [
+    "style-test.md",
     "type-system.md",
     "thought-about-upcoming-xr.md",
     "the-paradox-of-popularity.md",
     "best-account-system.md",
-    "style-test.md",
     "prism.md",
     "design-pattern-in-rust-new-type.md",
     "2021-summary.md"
