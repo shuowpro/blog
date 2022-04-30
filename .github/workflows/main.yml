@@ -52,7 +52,7 @@ jobs:
 
       - name: Deploy to Production (Staging)
         uses: amondnet/vercel-action@v20
-        id: deploy-vercel-production
+        id: deploy-vercel-stagging
         if: steps.branch-name.outputs.is_default == 'false' && github.event_name != 'workflow_dispatch'
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
