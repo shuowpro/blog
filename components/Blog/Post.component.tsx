@@ -85,7 +85,7 @@ export function _Post({ index, frontmatter }: PostProps) {
 
 	return (
 		<Link aria-label={ariaLabel} href={href} passHref>
-			<Container aria-label={ariaLabel} href={href}>
+			<Container aria-label={ariaLabel}>
 				{frontmatter.banner && index <= 2 && (
 					<Banner>
 						<BannerPlaceholder />

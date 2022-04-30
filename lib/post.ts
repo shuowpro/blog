@@ -17,7 +17,7 @@ const BLOG_POSTS_DIR = join(process.cwd(), 'data', 'blog');
 /**
  * Get the slugs of all available blog posts
  */
-export async function getAllPostSlugs() {
+export async function getAllPostFileNames() {
 	return readdirSync(BLOG_POSTS_DIR);
 }
 
@@ -25,19 +25,20 @@ export async function getAllPostSlugs() {
  * Get the frontmatter metadata for all available blog posts
  */
 export async function getAllPostsFrontMatter() {
-	const files = readdirSync(BLOG_POSTS_DIR);
+	const fileNames = readdirSync(BLOG_POSTS_DIR);
 
-	return files
-		.map((slug) => {
-			const source = readFileSync(join(BLOG_POSTS_DIR, slug), 'utf8');
+	return fileNames
+		.map((fileName) => {
+			const source = readFileSync(join(BLOG_POSTS_DIR, fileName), 'utf8');
 			const { data } = matter(source);
 
 			const frontmatter = data as RawFrontMatter;
-			const trimmedSlug = slug.replace('.md', '');
+			const slug = encodeFileNameToSlug(fileName);
 
 			return {
 				...frontmatter,
-				slug: trimmedSlug,
+				slug,
+				fileName,
 			} as FrontMatter;
 		})
 		.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
@@ -53,7 +54,8 @@ export async function getAllPostsFrontMatter() {
  * @param {string} slug - Slug / file name of the blog post to load data from
  */
 export async function getPost(slug: string): Promise<Post> {
-	const raw = readFileSync(join(process.cwd(), 'data', 'blog', `${slug}.md`)).toString();
+	const fileName = decodeSlugToFileName(slug);
+	const raw = readFileSync(join(process.cwd(), 'data', 'blog', fileName), 'utf-8').toString();
 	const { content, data } = matter(raw);
 	const source = await serialize(content, {
 		scope: data,
@@ -64,14 +66,24 @@ export async function getPost(slug: string): Promise<Post> {
 	});
 
 	const frontmatter = data as RawFrontMatter;
-	const trimmedSlug = slug.replace('.md', '');
 
 	return {
 		frontmatter: {
 			...frontmatter,
 			date: format(new Date(frontmatter.date), 'PPP'),
-			slug: trimmedSlug,
+			slug,
+			fileName,
 		},
 		source,
 	};
+}
+
+// No need to encodeURIComponent() as the slug will be encoded by Next.js
+export function encodeFileNameToSlug(fileName: string): string {
+	return fileName.replace(/\.md/, '');
+}
+
+// No need to decodeURIComponent() as the slug will be decoded by Next.js
+export function decodeSlugToFileName(slug: string): string {
+	return `${slug}.md`;
 }

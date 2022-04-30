@@ -12,7 +12,10 @@ export interface RawFrontMatter {
 }
 
 export interface FrontMatter extends RawFrontMatter {
+	// encoded, trim .md extension name
 	slug: string;
+	// raw file name, not encoded, with .md extension
+	fileName: string;
 }
 
 export interface Post {

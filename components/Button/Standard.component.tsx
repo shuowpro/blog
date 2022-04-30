@@ -53,7 +53,7 @@ export function Standard({ children, className, icon, ...rest }: StandardProps) 
 
 			return (
 				<Link href={rest.href} passHref>
-					<LinkContainer {...rest} href={rest.href}>
+					<LinkContainer {...rest}>
 						{icon && <StyledIcon icon={icon} />}
 						{children}
 					</LinkContainer>
