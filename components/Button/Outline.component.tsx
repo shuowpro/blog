@@ -45,13 +45,11 @@ export function Outline({
 		<Link href={href} passHref>
 			<Container
 				className={className}
-				href={href}
 				onClick={(...args) => onClick && onClick(...args)}
 				rel="noopener noreferrer"
 				small={small}
 				target={external ? '_blank' : undefined}
-				{...rest}
-			>
+				{...rest}>
 				{icon && <StyledIcon icon={icon} />}
 				{children}
 			</Container>

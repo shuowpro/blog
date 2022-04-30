@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 import { MDXRemote } from 'next-mdx-remote';
 
 import { Blog, Pill } from '~/components';
-import { getPost, getAllPostSlugs } from '~/lib/post';
+import { getPost, getAllPostFileNames, encodeFileNameToSlug } from '~/lib/post';
 import { Layout } from '~/layouts';
 
 import type { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
@@ -20,12 +20,12 @@ interface BlogPostProps {
 }
 
 export const getStaticPaths: GetStaticPaths<PathProps> = async () => {
-	const posts = await getAllPostSlugs();
+	const postFileNames = await getAllPostFileNames();
 
 	return {
-		paths: posts.map((post) => ({
+		paths: postFileNames.map((fileName) => ({
 			params: {
-				slug: post.replace(/\.md/, ''),
+				slug: encodeFileNameToSlug(fileName),
 			},
 		})),
 		fallback: false,
@@ -106,8 +106,10 @@ const TitlePrefix = styled.span(tw`
 `);
 
 const Title = styled.span(tw`
-	text-gray-900 dark:text-white \
+	block \
+	text-gray-900 dark:text-white
 	sm:text-4xl text-3xl text-center leading-8 font-extrabold tracking-tight
+	my-2
 `);
 
 const DateContainer = styled.span(tw`

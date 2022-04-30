@@ -36,6 +36,12 @@ export const ElementStyles = css`
 		}
 	}
 
+	h1 {
+		${tw`
+			my-8
+		`}
+	}
+
 	a {
 		${tw`
 			dark:text-white \
@@ -97,7 +103,7 @@ export const ElementStyles = css`
 	code {
 		${tw`
 			bg-gray-100 dark:bg-gray-700 \
-			p-1 \		
+			p-1 \
 			text-gray-400 dark:text-gray-200 \
 			rounded
 		`}

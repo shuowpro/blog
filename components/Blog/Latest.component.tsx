@@ -76,7 +76,7 @@ export function Latest({ frontmatter }: LatestProps) {
 
 	return (
 		<Link aria-label={ariaLabel} href={href} passHref>
-			<Container aria-label={ariaLabel} href={href}>
+			<Container aria-label={ariaLabel}>
 				{(frontmatter.banner_show ?? true) && (
 					<Banner>
 						<BannerPlaceholder />
