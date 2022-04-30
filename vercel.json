@@ -1,0 +1,18 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"version": 2,
+	"alias": "suwako.dev",
+	"cleanUrls": true,
+	"public": true,
+	"github": {
+		"enabled": false
+	},
+	"regions": ["sin1"],
+	"redirects": [
+		{ "source": "/github", "destination": "https://github.com/leuction" },
+		{ "source": "/linkedin", "destination": "https://www.linkedin.com/in/shuo-wang-0/" },
+		{ "source": "/portfolio", "destination": "/projects" },
+		{ "source": "/resume", "destination": "https://read.cv/shuow" },
+		{ "source": "/twitter", "destination": "https://twitter.com/suwakopro" }
+	]
+}
