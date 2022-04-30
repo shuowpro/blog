@@ -23,37 +23,10 @@ jobs:
       - name: Delete the knowledgebase folder
         run: rm -rf ./_knowledgebase
 
-      # - name: Get yarn cache directory path
-      #   id: yarn-cache-dir-path
-      #   run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      # - name: Cache yarn packages
-      #   uses: actions/cache@v3
-      #   id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      #   with:
-      #     path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
-
-      # - name: Setup Node 18
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18
-
-      # - name: Build
-      #   run: |
-      #     yarn install --frozen-lockfile
-      #     yarn build
-
-      - name: Get branch name
-        id: branch-name
-        uses: tj-actions/branch-names@v5.2
-
       - name: Deploy to Production (Staging)
         uses: amondnet/vercel-action@v20
         id: deploy-vercel-stagging
-        if: steps.branch-name.outputs.is_default == 'false' && github.event_name != 'workflow_dispatch'
+        if: github.ref_name != 'main' && github.event_name != 'workflow_dispatch'
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
@@ -63,7 +36,7 @@ jobs:
       - name: Deploy to Production (Production)
         uses: amondnet/vercel-action@v20
         id: deploy-vercel-production
-        if: steps.branch-name.outputs.is_default == 'true' || github.event_name == 'workflow_dispatch'
+        if: github.ref_name == 'main' || github.event_name == 'workflow_dispatch'
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
