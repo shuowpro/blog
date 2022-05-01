@@ -12,6 +12,7 @@ import 'nprogress/nprogress.css';
 
 import { useAnalytics } from '~/lib';
 import { Theme } from '~/types';
+import Head from 'next/head';
 
 NProgress.configure({
 	minimum: 0.3,
@@ -67,6 +68,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
 	return (
 		<ThemeProvider attribute="class" defaultTheme={Theme.SYSTEM} themes={Object.values(Theme)}>
+			<Head>
+				<meta name="theme-color" content="#0c0e10" />
+			</Head>
 			<EmotionStyles styles={GlobalStyles} />
 			<TailwindStyles />
 			<Toaster />
