@@ -69,6 +69,7 @@ export const ElementStyles = css`
 	ul,
 	li {
 		${tw`
+			dark:text-gray-200
 			text-gray-400
 		`}
 	}
