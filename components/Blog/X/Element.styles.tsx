@@ -135,7 +135,7 @@ export const ElementStyles = css`
 
 	td {
 		${tw`
-			dark:text-gray-400
+			dark:text-gray-300
 		`}
 	}
 
