@@ -2,7 +2,6 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import tw from 'twin.macro';
 import { MDXRemote } from 'next-mdx-remote';
-import Giscus from '@giscus/react';
 
 import { Blog, Pill } from '~/components';
 import { getPost, getAllPostFileNames, encodeFileNameToSlug } from '~/lib/post';
@@ -175,20 +174,6 @@ export default function BlogPost({ post }: BlogPostProps) {
 						<MDXRemote {...post.source} components={Blog.X} />
 					</Article>
 				</Content>
-				<Giscus
-					id="comments"
-					repo="leuction/blog"
-					repoId="MDEwOlJlcG9zaXRvcnkzODQ3NDUwNjQ="
-					category="Announcements"
-					categoryId="DIC_kwDOFu6-aM4CAXex"
-					mapping="title"
-					reactionsEnabled="1"
-					emitMetadata="0"
-					inputPosition="top"
-					theme="dark"
-					lang="zh-CN"
-					loading="lazy"
-				/>
 			</Container>
 		</Layout.Blog>
 	);
