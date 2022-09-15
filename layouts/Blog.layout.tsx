@@ -15,7 +15,7 @@ const Main = styled.main(tw`flex flex-col justify-center sm:px-8`);
 
 export function BlogLayout({ children, seo }: PropsWithChildren<BlogLayoutProps>) {
 	const seoProps = useSeoProps({
-		title: '无何有之乡',
+		title: '虹色的世界',
 		...seo,
 	});
 

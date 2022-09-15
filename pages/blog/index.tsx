@@ -44,7 +44,7 @@ export default function BlogPage({ serialisedFrontmatters }: BlogProps) {
 	const latestPost = frontmatters.shift();
 
 	return (
-		<Layout.Default seo={{ title: '无何有之乡' }}>
+		<Layout.Default seo={{ title: '虹色的世界' }}>
 			<Container>
 				<Content>
 					<Blog.Latest frontmatter={latestPost} />
