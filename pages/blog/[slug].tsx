@@ -149,6 +149,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 								draggable={false}
 								layout="fill"
 								src={post.frontmatter.banner}
+								objectPosition={post.frontmatter.banner_position}
 							/>
 						</Banner>
 					)}

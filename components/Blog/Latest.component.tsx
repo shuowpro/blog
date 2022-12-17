@@ -85,6 +85,7 @@ export function Latest({ frontmatter }: LatestProps) {
 							draggable={false}
 							layout="fill"
 							src={frontmatter.banner}
+							objectPosition={frontmatter.banner_position}
 						/>
 					</Banner>
 				)}

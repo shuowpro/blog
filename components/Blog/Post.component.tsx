@@ -95,6 +95,7 @@ export function _Post({ index, frontmatter }: PostProps) {
 							layout="fill"
 							loading="lazy"
 							src={frontmatter.banner}
+							objectPosition={frontmatter.banner_position}
 						/>
 					</Banner>
 				)}

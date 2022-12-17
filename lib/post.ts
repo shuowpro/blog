@@ -15,6 +15,17 @@ import type { FrontMatter, Post, RawFrontMatter } from '~/types';
 const BLOG_POSTS_DIR = join(process.cwd(), 'data', 'blog');
 
 /**
+ * Convert the banner axis to the format of `x%`
+ * @param bannerAxis the banner axis in the frontmatter
+ * @returns the banner position in the format of `x%`
+ */
+function convertBannerAxis(bannerAxis: string | undefined | null) {
+	if (!bannerAxis) return 'center';
+
+	return `${Math.floor(parseFloat(bannerAxis) * 100)}%`;
+}
+
+/**
  * Get the slugs of all available blog posts
  */
 export async function getAllPostFileNames() {
@@ -35,10 +46,15 @@ export async function getAllPostsFrontMatter() {
 			const frontmatter = data as RawFrontMatter;
 			const slug = encodeFileNameToSlug(fileName);
 
+			const bannerPosition = `${convertBannerAxis(frontmatter.banner_x)} ${convertBannerAxis(
+				frontmatter.banner_y,
+			)}`;
+
 			return {
 				...frontmatter,
 				slug,
 				fileName,
+				banner_position: bannerPosition,
 			} as FrontMatter;
 		})
 		.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
@@ -67,12 +83,17 @@ export async function getPost(slug: string): Promise<Post> {
 
 	const frontmatter = data as RawFrontMatter;
 
+	const bannerPosition = `${convertBannerAxis(frontmatter.banner_x)} ${convertBannerAxis(
+		frontmatter.banner_y,
+	)}`;
+
 	return {
 		frontmatter: {
 			...frontmatter,
 			date: format(new Date(frontmatter.date), 'PPP'),
 			slug,
 			fileName,
+			banner_position: bannerPosition,
 		},
 		source,
 	};
