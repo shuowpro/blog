@@ -125,7 +125,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 	return (
 		<Layout.Blog
 			seo={{
-				title: `虹色的世界 ─ ${post.frontmatter.title}`,
+				title: post.frontmatter.title,
 				description: post.frontmatter.description ?? undefined,
 				openGraph: {
 					title: post.frontmatter.title,
