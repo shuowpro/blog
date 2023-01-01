@@ -86,7 +86,7 @@ export function _Post({ index, frontmatter }: PostProps) {
 	return (
 		<Link aria-label={ariaLabel} href={href} passHref>
 			<Container aria-label={ariaLabel}>
-				{frontmatter.banner && index <= 2 && (
+				{frontmatter.banner && (
 					<Banner>
 						<BannerPlaceholder />
 						<Image
@@ -100,7 +100,7 @@ export function _Post({ index, frontmatter }: PostProps) {
 					</Banner>
 				)}
 
-				<Content banner={frontmatter.banner && index <= 2}>
+				<Content banner>
 					<ContextText>
 						<Title>{frontmatter.title}</Title>
 						{((frontmatter.description && frontmatter.description_show) || true) && (
