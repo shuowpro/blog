@@ -54,24 +54,22 @@ export default function Error() {
 					<Text>
 						<Title>{status}</Title>
 						<Description>
-							Looks like something went wrong on our end.
+							我好像坏掉了
 							<br />
-							This isn&apos;t your fault, it&apos;s ours. Please try again later.
+							给我点时间，我会努力修好自己的
 						</Description>
 						<Actions>
 							<Button.Standard
 								type={NavigationItemType.ACTION}
 								onClick={() => history.go(-1)}
-								icon="feather:arrow-left"
-							>
-								Back
+								icon="feather:arrow-left">
+								后退
 							</Button.Standard>
 							<Button.Standard
 								type={NavigationItemType.LINK}
 								href="/"
-								icon="feather:home"
-							>
-								Home
+								icon="feather:home">
+								主页
 							</Button.Standard>
 						</Actions>
 					</Text>

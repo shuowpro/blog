@@ -67,7 +67,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	useAnalytics();
 
 	return (
-		<ThemeProvider attribute="class" defaultTheme={Theme.SYSTEM} themes={Object.values(Theme)}>
+		<ThemeProvider attribute="class" defaultTheme={Theme.DARK} themes={Object.values(Theme)}>
 			<Head>
 				<meta name="theme-color" content="#0c0e10" />
 			</Head>

@@ -6,6 +6,7 @@ import tw from 'twin.macro';
 import { Pill } from '~/components';
 
 import type { FrontMatter } from '~/types';
+import { formatRawDate } from '~/lib';
 
 interface PostProps {
 	index: number;
@@ -109,7 +110,7 @@ export function _Post({ index, frontmatter }: PostProps) {
 							</Description>
 						)}
 						<Footer>
-							<Pill.Date>{frontmatter.date}</Pill.Date>
+							<Pill.Date>{formatRawDate(frontmatter.date)}</Pill.Date>
 						</Footer>
 					</ContextText>
 				</Content>

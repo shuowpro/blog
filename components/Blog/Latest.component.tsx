@@ -6,6 +6,7 @@ import tw from 'twin.macro';
 import { Pill } from '~/components';
 
 import type { FrontMatter } from '~/types';
+import { formatRawDate } from '~/lib';
 
 interface LatestProps {
 	frontmatter: FrontMatter;
@@ -97,7 +98,7 @@ export function Latest({ frontmatter }: LatestProps) {
 						</Description>
 					)}
 					<Footer>
-						<Pill.Date>{frontmatter.date}</Pill.Date>
+						<Pill.Date>{formatRawDate(frontmatter.date)}</Pill.Date>
 					</Footer>
 				</Content>
 			</Container>

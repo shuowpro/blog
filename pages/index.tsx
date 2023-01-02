@@ -1,124 +1,61 @@
 import styled from '@emotion/styled';
 import tw from 'twin.macro';
-import { differenceInYears, isSameDay, isSameMonth } from 'date-fns';
-import { Icon } from '@iconify/react';
 
-import { Button, Pill, Transition, Wave } from '~/components';
-import { NavigationItemType, WithChildren } from '~/types';
+import { Blog } from '~/components';
+import { getAllPostsFrontMatter } from '~/lib/post';
 import { Layout } from '~/layouts';
-import { usePersistantState } from '~/lib';
 
-import type { NavigationItem } from '~/types';
+import type { GetStaticProps } from 'next';
+
+import type { FrontMatter } from '~/types';
+import { generateRssFeed } from '~/lib/feed';
+
+interface BlogProps {
+	serialisedFrontmatters: string;
+}
 
 const Container = styled.div(tw`
-	min-h-screen flex items-center justify-center \
-	py-12
+	mt-8 sm:mt-16 mb-20 mx-0 sm:mx-6 lg:mb-28 lg:mx-8
 `);
 
 const Content = styled.div(tw`
-	max-w-md sm:max-w-lg md:sm:max-w-2xl lg:sm:max-w-3xl w-full space-y-8 \
-	text-center
+	relative max-w-6xl mx-auto
 `);
 
-const Title = styled.h1(tw`
-	text-gray-500 dark:text-white \
-	text-4xl sm:text-5xl md:text-5xl lg:text-7xl \
-	tracking-tight font-extrabold
+const PostsContainer = styled.div(tw`
+	mt-4 lg:mt-12 \
+	grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:max-w-none
 `);
 
-const Description = styled.p(tw`
-	max-w-xs \
-	mt-4 md:mt-8 mx-auto \
-	text-base text-gray-300 sm:text-lg md:text-xl md:max-w-3xl
-`);
+export const getStaticProps: GetStaticProps<BlogProps> = async () => {
+	await generateRssFeed();
 
-const LineBreak = styled.br(tw`
-	hidden sm:block
-`);
+	const frontmatters = await getAllPostsFrontMatter();
 
-const StyledPill = styled(Pill.Standard)(tw`
-	mt-4
-`);
+	return {
+		props: {
+			serialisedFrontmatters: JSON.stringify(frontmatters),
+		},
+	};
+};
 
-const Actions = styled.div`
-	${tw`
-		flex flex-col sm:flex-row items-center justify-center sm:space-x-4 space-y-4 sm:space-y-0 w-full \
-		mt-8 sm:mt-4
-	`}
+export default function BlogPage({ serialisedFrontmatters }: BlogProps) {
+	const frontmatters = JSON.parse(serialisedFrontmatters) as Array<FrontMatter>;
 
-	div {
-		${tw`
-			w-full sm:w-auto
-		`}
-	}
-`;
+	if (frontmatters.length <= 0) return <Blog.Error routeBlog={false} />;
 
-const ActionIcon = styled(Icon)(tw`
-	mr-3
-`);
-
-const ActionText = styled.span(tw`
-	-mt-1 py-1
-`);
-
-const ACTIONS: Array<NavigationItem> = [
-	{
-		type: NavigationItemType.LINK,
-		href: '/blog',
-		icon: <ActionIcon icon="feather:edit-3" />,
-		text: '博客',
-	},
-	// {
-	// 	type: NavigationItemType.LINK,
-	// 	href: '/projects',
-	// 	icon: <ActionIcon icon="feather:copy" />,
-	// 	text: 'Projects',
-	// },
-	{
-		type: NavigationItemType.LINK,
-		external: true,
-		href: 'https://github.com/leuction',
-		icon: <ActionIcon icon="feather:github" />,
-		text: 'GitHub',
-	},
-];
-
-export default function HomePage() {
-	const { animations: animations } = usePersistantState().get();
-
-	// const description = `介绍`;
+	const latestPost = frontmatters.shift();
 
 	return (
-		<Layout.Default>
+		<Layout.Default seo={{ title: '虹色的世界' }}>
 			<Container>
 				<Content>
-					<Transition duration={1000} enabled={animations}>
-						<Title>
-							大家好 <Wave>👋</Wave> 我是Suwako, <LineBreak />
-							我是一名 <StyledPill>开发者</StyledPill>
-						</Title>
-					</Transition>
-					{/* <Transition delay={500} duration={1000} enabled={animations}>
-						<Description>{description}</Description>
-					</Transition> */}
-					<Actions>
-						{ACTIONS.map((action, index) => {
-							if (action.type !== NavigationItemType.LINK) return null;
-
-							return (
-								<Transition
-									delay={300 + index * 100}
-									key={index}
-									duration={1000}
-									enabled={animations}>
-									<Button.Outline href={action.href}>
-										{action.icon}
-										<ActionText>{action.text}</ActionText>
-									</Button.Outline>
-								</Transition>
-							);
-						})}
-					</Actions>
+					<Blog.Latest frontmatter={latestPost} />
+					<PostsContainer>
+						{frontmatters.map((frontmatter, i) => (
+							<Blog.Post key={i} frontmatter={frontmatter} index={i} />
+						))}
+					</PostsContainer>
 				</Content>
 			</Container>
 		</Layout.Default>

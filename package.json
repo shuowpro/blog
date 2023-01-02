@@ -37,6 +37,7 @@
 		"@tailwindcss/typography": "^0.4.1",
 		"canvas-confetti": "^1.4.0",
 		"date-fns": "^2.24.0",
+		"feed": "^4.2.2",
 		"github-colors": "^2.2.20",
 		"inter-ui": "^3.19.3",
 		"next": "^12.1.0",
