@@ -16,6 +16,12 @@ const staticMenuItems: Array<Array<NavigationItem>> = [
 			text: '主页',
 			href: '/',
 		},
+		{
+			type: NavigationItemType.LINK,
+			icon: 'feather:rss',
+			text: 'RSS',
+			href: '/rss.xml',
+		},
 		// {
 		// 	type: NavigationItemType.LINK,
 		// 	icon: 'feather:copy',

@@ -57,11 +57,11 @@ export async function getAllPostsFrontMatter() {
 				banner_position: bannerPosition,
 			} as FrontMatter;
 		})
-		.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
-		.map((f) => ({
-			...f,
-			date: format(new Date(f.date), 'PPP'),
-		}));
+		.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+	// .map((f) => ({
+	// 	...f,
+	// 	date: format(new Date(f.date), 'PPP'),
+	// }));
 }
 
 /**
@@ -90,7 +90,7 @@ export async function getPost(slug: string): Promise<Post> {
 	return {
 		frontmatter: {
 			...frontmatter,
-			date: format(new Date(frontmatter.date), 'PPP'),
+			// date: format(new Date(frontmatter.date), 'PPP'),
 			slug,
 			fileName,
 			banner_position: bannerPosition,

@@ -10,6 +10,7 @@ import { Layout } from '~/layouts';
 import type { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import type { ParsedUrlQuery } from 'querystring';
 import type { Post } from '~/types';
+import { formatRawDate } from '~/lib/time';
 
 interface PathProps extends ParsedUrlQuery {
 	slug: string;
@@ -132,7 +133,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 					images: [
 						{
 							url: post.frontmatter.banner ?? '/banner.png',
-							alt: post.frontmatter.description,
+							alt: post.frontmatter.description ?? post.frontmatter.title,
 							width: 1280,
 							height: 720,
 						},
@@ -163,7 +164,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 						</div>
 
 						<DateContainer>
-							<Pill.Date>{post.frontmatter.date}</Pill.Date>
+							<Pill.Date>{formatRawDate(post.frontmatter.date)}</Pill.Date>
 						</DateContainer>
 
 						{post.frontmatter.description && post.frontmatter.description_show && (

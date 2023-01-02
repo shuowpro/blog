@@ -8,6 +8,7 @@ import { Layout } from '~/layouts';
 import type { GetStaticProps } from 'next';
 
 import type { FrontMatter } from '~/types';
+import { generateRssFeed } from '~/lib/feed';
 
 interface BlogProps {
 	serialisedFrontmatters: string;
@@ -27,6 +28,8 @@ const PostsContainer = styled.div(tw`
 `);
 
 export const getStaticProps: GetStaticProps<BlogProps> = async () => {
+	await generateRssFeed();
+
 	const frontmatters = await getAllPostsFrontMatter();
 
 	return {
