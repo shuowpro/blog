@@ -9,7 +9,7 @@ export function useSeoProps(
 	const router = useRouter();
 
 	const title = '虹色的世界';
-	const description = "Hey 👋 I'm Shuo, a developer";
+	const description = 'Suwako的博客';
 
 	return {
 		title,
@@ -23,9 +23,9 @@ export function useSeoProps(
 			type: 'website',
 			images: [
 				{
-					url: '/banner.png',
+					url: '/banner.jpg',
 					alt: description,
-					width: 1280,
+					width: 720,
 					height: 720,
 				},
 			],

@@ -132,7 +132,7 @@ export default function BlogPost({ post }: BlogPostProps) {
 					title: post.frontmatter.title,
 					images: [
 						{
-							url: post.frontmatter.banner ?? '/banner.png',
+							url: post.frontmatter.banner ?? '/banner.jpg',
 							alt: post.frontmatter.description ?? post.frontmatter.title,
 							width: 1280,
 							height: 720,
