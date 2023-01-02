@@ -48,26 +48,24 @@ export default function Error() {
 						<Icon icon="feather:alert-triangle" tw="h-12 text-primary-500 w-auto" />
 					</IconContainer>
 					<Text>
-						<Title>Whoops!</Title>
+						<Title>啊啊啊</Title>
 						<Description>
-							Looks like you took a wrong turn.
+							页面不见了
 							<br />
-							The page you&apos;re looking for couldn&apos;t be found.
+							肯定是有人把它偷走了
 						</Description>
 						<Actions>
 							<Button.Standard
 								type={NavigationItemType.ACTION}
 								onClick={() => history.go(-1)}
-								icon="feather:arrow-left"
-							>
-								Back
+								icon="feather:arrow-left">
+								后退
 							</Button.Standard>
 							<Button.Standard
 								type={NavigationItemType.LINK}
 								href="/"
-								icon="feather:home"
-							>
-								Home
+								icon="feather:home">
+								主页
 							</Button.Standard>
 						</Actions>
 					</Text>

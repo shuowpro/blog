@@ -16,12 +16,6 @@ const staticMenuItems: Array<Array<NavigationItem>> = [
 			text: '主页',
 			href: '/',
 		},
-		{
-			type: NavigationItemType.LINK,
-			icon: 'feather:edit-3',
-			text: '博客',
-			href: '/blog',
-		},
 		// {
 		// 	type: NavigationItemType.LINK,
 		// 	icon: 'feather:copy',
@@ -63,37 +57,16 @@ export function useNavigation() {
 	const state = usePersistantState();
 	const { animations: background } = state.get();
 	const { color, loading, status } = useStatus();
-	const { theme, setTheme } = useTheme();
+	// const { theme, setTheme } = useTheme();
 
-	const isDark = useMemo(() => {
-		if (theme === Theme.SYSTEM)
-			return window.matchMedia('(prefers-color-scheme: dark)').matches;
+	// const isDark = useMemo(() => {
+	// 	if (theme === Theme.SYSTEM)
+	// 		return window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-		return theme === Theme.DARK;
-	}, [theme]);
+	// 	return theme === Theme.DARK;
+	// }, [theme]);
 
 	const menuItems = staticMenuItems;
-
-	// const menuItems: NavigationItems = [
-	// 	...staticMenuItems,
-	// 	...(!loading && status
-	// 		? [
-	// 				[
-	// 					{
-	// 						type: NavigationItemType.LINK,
-	// 						icon: (
-	// 							<Status.Indicator
-	// 								color={color}
-	// 								pulse={status.discord_status !== 'offline'}
-	// 							/>
-	// 						),
-	// 						text: 'Status',
-	// 						href: '/status',
-	// 					} as NavigationItem,
-	// 				],
-	// 		  ]
-	// 		: []),
-	// ];
 
 	const settingsItems: NavigationItems = [
 		[
@@ -108,13 +81,13 @@ export function useNavigation() {
 						animations: !settings.animations,
 					})),
 			},
-			{
-				type: NavigationItemType.ACTION,
-				icon: 'feather:moon',
-				endIcon: isDark ? 'feather:check-square' : 'feather:square',
-				text: `${isDark ? '深色' : '浅色'}主题`,
-				onClick: () => setTheme(isDark ? 'light' : 'dark'),
-			},
+			// {
+			// 	type: NavigationItemType.ACTION,
+			// 	icon: 'feather:moon',
+			// 	endIcon: isDark ? 'feather:check-square' : 'feather:square',
+			// 	text: `${isDark ? '深色' : '浅色'}主题`,
+			// 	onClick: () => setTheme(isDark ? 'light' : 'dark'),
+			// },
 		],
 	];
 
