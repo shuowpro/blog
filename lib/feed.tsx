@@ -17,7 +17,7 @@ const feedOptions: FeedOptions = {
 	description: '虹色的世界',
 	id: SITE_URL,
 	link: SITE_URL,
-	image: `${SITE_URL}/banner.png`,
+	image: `${SITE_URL}/banner.jpg`,
 	favicon: `${SITE_URL}/favicon.ico`,
 	language: 'zh-cn',
 	copyright: `Copyright © ${format(new Date(), 'yyyy')} Suwako`,
