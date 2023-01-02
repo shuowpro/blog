@@ -20,7 +20,7 @@ const staticMenuItems: Array<Array<NavigationItem>> = [
 			type: NavigationItemType.LINK,
 			icon: 'feather:rss',
 			text: 'RSS',
-			href: '/rss.xml',
+			href: 'https://feeds.feedburner.com/suwako/blog',
 		},
 		// {
 		// 	type: NavigationItemType.LINK,
