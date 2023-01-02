@@ -28,6 +28,8 @@ const PostsContainer = styled.div(tw`
 `);
 
 export const getStaticProps: GetStaticProps<BlogProps> = async () => {
+	await generateRssFeed();
+
 	const frontmatters = await getAllPostsFrontMatter();
 
 	return {
