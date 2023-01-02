@@ -23,7 +23,7 @@ const feedOptions: FeedOptions = {
 	copyright: `Copyright © ${format(new Date(), 'yyyy')} Suwako`,
 };
 
-export async function generateRssFeed() {
+export async function generateRssFeed(): Promise<Feed> {
 	const postFileNames = await getAllPostFileNames();
 
 	const feed = new Feed(feedOptions);
@@ -48,5 +48,5 @@ export async function generateRssFeed() {
 
 	feed.items.sort((a, b) => b.date.getTime() - a.date.getTime());
 
-	writeFileSync(join(PUBLIC_DIR, 'rss.xml'), feed.rss2());
+	return feed;
 }
