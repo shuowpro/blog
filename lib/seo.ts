@@ -14,16 +14,16 @@ export function useSeoProps(
 	return {
 		title,
 		description,
-		canonical: `https://suwako.dev/${router.asPath}`,
+		canonical: `https://suwako.dev${router.asPath}`,
 		openGraph: {
 			title,
 			description,
 			site_name: title,
-			url: `https://suwako.dev/${router.asPath}`,
+			url: `https://suwako.dev${router.asPath}`,
 			type: 'website',
 			images: [
 				{
-					url: '/banner.jpg',
+					url: `https://suwako.dev/banner.jpg`,
 					alt: description,
 					width: 720,
 					height: 720,
