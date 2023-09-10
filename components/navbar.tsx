@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
-import { NavigationItem, NavigationItems } from '~/types'
+import { NavigationItem, NavigationItems } from '@/types'
 import Link from 'next/link'
 
 export const Navbar = ({ menu }: { menu: NavigationItems }) => {

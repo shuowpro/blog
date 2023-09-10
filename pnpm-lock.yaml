@@ -59,6 +59,9 @@ dependencies:
   nprogress:
     specifier: ^0.2.0
     version: 0.2.0
+  ogl-typescript:
+    specifier: ^0.1.40
+    version: 0.1.40
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -4003,6 +4006,10 @@ packages:
       define-properties: 1.2.0
       es-abstract: 1.22.1
     dev: true
+
+  /ogl-typescript@0.1.40:
+    resolution: {integrity: sha512-7lpT8u35jd9W7Q48enrcCEL4H0x4co6pn5t6rXZgQN7UT39mcdzRsSr4ucZDOvfwKkUT+UvH2zw83/9mT59bFQ==}
+    dev: false
 
   /once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}

@@ -2,7 +2,7 @@ import matter from 'gray-matter'
 import { join } from 'path'
 import { readdir, readFile } from 'fs/promises'
 
-import type { FrontMatter, Post, RawFrontMatter } from '~/types'
+import type { FrontMatter, Post, RawFrontMatter } from '@/types'
 
 const BLOG_POSTS_DIR = join(process.cwd(), 'data', 'blog')
 
