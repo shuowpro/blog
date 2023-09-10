@@ -48,7 +48,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="theme-color" content="#0c0e10" />
     </head>
-    <body>
+    <body className="bg-black">
       <NextTopLoader />
       <Navbar menu={staticMenuItems} />
       {/* <NextSeo /> */}
