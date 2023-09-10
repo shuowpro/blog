@@ -1,6 +1,7 @@
 // import NProgress from 'nprogress'
 // import Router from 'next/router'
 // import 'nprogress/nprogress.css'
+import { Analytics } from '@vercel/analytics/react'
 import { HomeIcon, TwitterLogoIcon, GitHubLogoIcon } from '@radix-ui/react-icons'
 import { Navbar } from '@/components/navbar'
 import type { NavigationItems } from '@/types'
@@ -62,6 +63,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
     <body className="bg-black">
       <Navbar menu={staticMenuItems} />
       {children}
+      <Analytics />
     </body>
   </html>
 )
