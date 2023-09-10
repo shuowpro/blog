@@ -1,29 +1,29 @@
-import styled from '@emotion/styled';
-import tw from 'twin.macro';
-import { NextSeo } from 'next-seo';
+import styled from '@emotion/styled'
+import tw from 'twin.macro'
+import { NextSeo } from 'next-seo'
 
-import { Navbar } from '~/components';
-import { useSeoProps } from '~/lib';
+import { Navbar } from '~/components'
+import { useSeoProps } from '~/lib'
 
-import type { ComponentProps, PropsWithChildren } from 'react';
+import type { ComponentProps, PropsWithChildren } from 'react'
 
 interface BlogLayoutProps {
-	seo?: Partial<ComponentProps<typeof NextSeo>>;
+  seo?: Partial<ComponentProps<typeof NextSeo>>
 }
 
-const Main = styled.main(tw`flex flex-col justify-center sm:px-8`);
+const Main = styled.main(tw`flex flex-col justify-center sm:px-8`)
 
 export function BlogLayout({ children, seo }: PropsWithChildren<BlogLayoutProps>) {
-	const seoProps = useSeoProps({
-		title: '虹色的世界',
-		...seo,
-	});
+  const seoProps = useSeoProps({
+    title: '虹色的世界',
+    ...seo,
+  })
 
-	return (
-		<>
-			<NextSeo {...seoProps} />
-			<Navbar.Standard />
-			<Main>{children}</Main>
-		</>
-	);
+  return (
+    <>
+      <NextSeo {...seoProps} />
+      <Navbar.Standard />
+      <Main>{children}</Main>
+    </>
+  )
 }

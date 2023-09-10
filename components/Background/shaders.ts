@@ -36,7 +36,7 @@ void main() {
 	gl_PointSize = 300.0 / length(mvPos.xyz) * (random.x + 0.1);
 	gl_Position = projectionMatrix * mvPos;
 }
-`;
+`
 
 export const fragment = `
 precision highp float;
@@ -54,4 +54,4 @@ void main() {
 	gl_FragColor.rgb = uColor;
 	gl_FragColor.a = circle;
 }
-`;
+`
