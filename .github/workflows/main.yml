@@ -24,7 +24,7 @@ jobs:
         run: rm -rf ./_knowledgebase
 
       - name: Deploy to Production (Staging)
-        uses: amondnet/vercel-action@v24
+        uses: amondnet/vercel-action@v20
         id: deploy-vercel-stagging
         if: github.event_name != 'workflow_dispatch' && github.ref_name != 'main'
         with:
@@ -34,7 +34,7 @@ jobs:
           scope: ${{ secrets.VERCEL_ORG_ID }}
 
       - name: Deploy to Production (Production)
-        uses: amondnet/vercel-action@v24
+        uses: amondnet/vercel-action@v20
         id: deploy-vercel-production
         if: github.event_name == 'workflow_dispatch' || github.ref_name == 'main'
         with:
