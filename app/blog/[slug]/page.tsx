@@ -1,34 +1,33 @@
 import Image from 'next/image'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-// import { Blog, Pill } from '~/components'
-// import { Layout } from '~/layouts'
 import { formatRawDate } from '@/lib/time'
 import { getPostBySlug } from '@/lib/post'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
+import type { Metadata } from 'next'
 
-const Page = async ({ params }: { params: { slug: string } }) => {
-  const decodedSlug = decodeURIComponent(params.slug)
-  console.log(decodedSlug)
-  const { frontMatter, source } = await getPostBySlug(decodedSlug)
+type Props = {
+  params: { slug: string }
+}
+
+async function getPost(slug: string) {
+  const decodedSlug = decodeURIComponent(slug)
+  return await getPostBySlug(decodedSlug)
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { frontMatter } = await getPost(params.slug)
+
+  return {
+    title: frontMatter.title,
+    description: frontMatter.description,
+  }
+}
+
+const Page = async ({ params }: Props) => {
+  const { frontMatter, source } = await getPost(params.slug)
   return (
-    // <Layout.Blog
-    //   seo={{
-    //     title: frontMatter.title,
-    //     description: frontMatter.description,
-    //     openGraph: {
-    //       title: frontMatter.title,
-    //       images: [
-    //         {
-    //           url: frontMatter.banner ?? '/banner.jpg',
-    //           alt: frontMatter.description ?? frontMatter.title,
-    //           width: 1280,
-    //           height: 720,
-    //         },
-    //       ],
-    //     },
-    //   }}>
     <div className="mt-24 flex flex-col space-y-4 max-w-4xl mx-auto my-4 px-2">
       <div className="flex flex-col space-y-4 mx-auto my-4 text-lg text-center">
         {frontMatter.title_prefix && (

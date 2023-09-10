@@ -1,17 +1,14 @@
-import { NextSeo } from 'next-seo'
+import type { Metadata } from 'next'
 import { PostCard } from '@/components/post-card'
 import { getAllPostsFrontMatter } from '@/lib'
 
+export const metadata: Metadata = {
+  title: '虹色的世界',
+  description: 'Suwako的博客',
+}
+
 const Page = async () => {
   const frontMatters = await getAllPostsFrontMatter()
-
-  //   const seoProps = useSeoProps()
-
-  //   if (frontMatters.length <= 0) {
-  //     return <Blog.Error routeBlog={false} />
-  //   }
-
-  //   const latestPost = frontmatters.shift()!
 
   return (
     <>
