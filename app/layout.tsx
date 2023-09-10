@@ -1,22 +1,10 @@
-// import NProgress from 'nprogress'
-// import Router from 'next/router'
-// import 'nprogress/nprogress.css'
+// import { NextSeo } from 'next-seo'
+import NextTopLoader from 'nextjs-toploader'
 import { Analytics } from '@vercel/analytics/react'
 import { HomeIcon, TwitterLogoIcon, GitHubLogoIcon } from '@radix-ui/react-icons'
 import { Navbar } from '@/components/navbar'
 import type { NavigationItems } from '@/types'
 import './globals.css'
-
-// NProgress.configure({
-// 	minimum: 0.3,
-// 	easing: 'ease',
-// 	speed: 800,
-// 	showSpinner: false,
-// })
-
-// Router.events.on('routeChangeStart', () => NProgress.start())
-// Router.events.on('routeChangeComplete', () => NProgress.done())
-// Router.events.on('routeChangeError', () => NProgress.done())
 
 const staticMenuItems: NavigationItems = [
   [
@@ -60,8 +48,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="theme-color" content="#0c0e10" />
     </head>
-    <body className="bg-black">
+    <body>
+      <NextTopLoader />
       <Navbar menu={staticMenuItems} />
+      {/* <NextSeo /> */}
       {children}
       <Analytics />
     </body>

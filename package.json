@@ -35,6 +35,7 @@
     "next-mdx-remote": "^4.4.1",
     "next-seo": "^6.1.0",
     "next-themes": "^0.2.1",
+    "nextjs-toploader": "^1.4.2",
     "nprogress": "^0.2.0",
     "ogl-typescript": "^0.1.40",
     "react": "^18.2.0",
