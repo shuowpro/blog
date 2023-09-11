@@ -1,25 +1,10 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
-interface NaviationItemBase {
-	endIcon?: string | ReactNode;
-	icon: string | ReactNode;
-	text: string;
-	onClick?: () => void;
-	href?: string;
+export interface NavigationItem {
+  icon: string | ReactNode
+  text: string
+  href: string
+  external: boolean
 }
 
-export enum NavigationItemType {
-	ACTION = 'action',
-	LINK = 'link',
-}
-
-export type NavigationItem =
-	| ({
-			type: NavigationItemType.ACTION;
-	  } & Omit<NaviationItemBase, 'href'>)
-	| ({
-			external?: boolean;
-			type: NavigationItemType.LINK;
-	  } & NaviationItemBase);
-
-export type NavigationItems = Array<Array<NavigationItem>>;
+export type NavigationItems = Array<Array<NavigationItem>>

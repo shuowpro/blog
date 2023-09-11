@@ -10,7 +10,7 @@ jobs:
       - name: Checkout Posts
         uses: actions/checkout@v3
         with:
-          repository: leuction/knowledgebase
+          repository: shuowpro/knowledgebase
           token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
           path: _knowledgebase
 
@@ -41,5 +41,5 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
+          vercel-args: "--prod"
           scope: ${{ secrets.VERCEL_ORG_ID }}
