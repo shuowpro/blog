@@ -30,10 +30,10 @@ export const PostCard = ({ frontMatter, index }: { frontMatter: FrontMatter; ind
           <Image
             alt={frontMatter.title}
             draggable={false}
-            layout="fill"
+            fill
             loading="lazy"
             src={frontMatter.banner}
-            objectPosition={frontMatter.banner_position}
+            style={{ objectPosition: frontMatter.banner_position }}
             className="absolute top-0 left-0 w-full h-48 object-cover select-none"
           />
         </div>
