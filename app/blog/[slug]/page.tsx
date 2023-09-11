@@ -60,24 +60,13 @@ const Page = async ({ params }: Props) => {
       </div>
       <div>
         {frontMatter.banner && (frontMatter.banner_show ?? true) && (
-          // <div className="relative sm:max-w-2xl lg:sm:max-w-6xl mx-auto my-2 sm:my-4">
-          //   <div className="w-full h-64 lg:h-64 mb-8 bg-gray-200 dark:bg-gray-600 rounded-3xl motion-safe:animate-pulse"></div>
-          //   <Image
-          //     alt={frontMatter.banner_alt ?? frontMatter.title}
-          //     draggable={false}
-          //     layout="fill"
-          //     src={frontMatter.banner}
-          //     objectPosition={frontMatter.banner_position}
-          //     className="absolute top-0 left-0 w-full h-auto max-h-64 lg:max-h-96 mb-8 rounded-3xl object-cover select-none shadow-xl transition ease-in-out duration-300"
-          //   />
-          // </div>
           <AspectRatio ratio={16 / 9}>
             <Image
               alt={frontMatter.banner_alt ?? frontMatter.title}
               draggable={false}
-              layout="fill"
+              fill
               src={frontMatter.banner}
-              objectPosition={frontMatter.banner_position}
+              style={{ objectPosition: frontMatter.banner_position }}
               className="object-cover rounded-3xl shadow-xl"
             />
           </AspectRatio>

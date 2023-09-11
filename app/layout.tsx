@@ -1,4 +1,3 @@
-// import { NextSeo } from 'next-seo'
 import NextTopLoader from 'nextjs-toploader'
 import { Analytics } from '@vercel/analytics/react'
 import { HomeIcon, TwitterLogoIcon, GitHubLogoIcon } from '@radix-ui/react-icons'
