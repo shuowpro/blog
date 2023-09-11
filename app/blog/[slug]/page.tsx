@@ -22,6 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: frontMatter.title,
     description: frontMatter.description,
+    openGraph: {
+      images: frontMatter.banner,
+    },
   }
 }
 

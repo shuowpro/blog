@@ -5,6 +5,9 @@ import { getAllPostsFrontMatter } from '@/lib'
 export const metadata: Metadata = {
   title: '虹色的世界',
   description: 'Suwako的博客',
+  openGraph: {
+    images: '/banner.jpg',
+  },
 }
 
 const Page = async () => {
