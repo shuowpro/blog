@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 import type { Metadata } from 'next'
+import remarkGfm from 'remark-gfm'
 
 type Props = {
   params: { slug: string }
@@ -74,7 +75,15 @@ const Page = async ({ params }: Props) => {
       </div>
 
       <article className="pt-16 mx-auto prose-primary prose-lg">
-        <MDXRemote source={source} options={{ parseFrontmatter: true }} />
+        <MDXRemote
+          source={source}
+          options={{
+            parseFrontmatter: true,
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+            },
+          }}
+        />
       </article>
     </div>
   )
