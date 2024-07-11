@@ -18,7 +18,7 @@ function isLandScape(banner: { width: number; height: number }) {
           <GridCard
             type={isLandScape(post.data.banner) ? 'landscape' : 'square'}
           >
-            <a href={`posts/${post.slug}`} class="w-full h-full relative">
+            <a href={`posts/${post.slug}`} class="w-full h-full">
               <div
                 class={cn(
                   'absolute w-full h-full p-8 z-50 backdrop-blur-sm backdrop-brightness-50',
