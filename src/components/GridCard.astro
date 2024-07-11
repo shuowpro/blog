@@ -16,7 +16,7 @@ const { type } = Astro.props
 >
   <!-- the height must be in this layer, otherwise the gap is not working -->
   <div class="p-2 w-full h-full">
-    <div class="rounded-2xl h-full w-full overflow-hidden">
+    <div class="rounded-2xl h-full w-full overflow-hidden relative">
       <slot />
     </div>
   </div>
