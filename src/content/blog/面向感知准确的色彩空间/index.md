@@ -1,5 +1,5 @@
 ---
-banner: ../../assets/sr5BhvS9N2nUpGJ.png
+banner: ./sr5BhvS9N2nUpGJ.png
 category: 科技评论
 title: 面向感知准确的色彩空间
 excerpt: HCT，一种新的，面向人类感知的色彩空间

@@ -6,7 +6,7 @@ import BentoGrid from '@/components/BentoGrid.astro'
 import GridCard from '@/components/GridCard.astro'
 
 function isLandScape(banner: { width: number; height: number }) {
-  return banner && banner.width * 0.8 > banner.height
+  return banner.width * 0.8 > banner.height
 }
 ---
 

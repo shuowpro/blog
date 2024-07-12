@@ -1,5 +1,5 @@
 ---
-banner: ../../assets/DZ2ah14rbceXJCR.png
+banner: ./DZ2ah14rbceXJCR.png
 category: 科技评论
 title: 未来两年的VR
 excerpt: 一些关于未来两年的VR/AR头显的乱七八糟的想法
