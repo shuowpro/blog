@@ -21,7 +21,6 @@ const { Content } = await post.render()
 <Layout title={post.data.title}>
   <main class="w-full flex flex-col items-center overflow-x-hidden">
     <Image
-      transition:name="banner"
       src={post.data.banner}
       alt={post.data.title}
       loading="eager"
