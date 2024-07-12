@@ -1,8 +1,8 @@
 ---
-banner: ./Bk9lJfGyIMWqR6i.png
+banner: "./Bk9lJfGyIMWqR6i.png"
 category: 年终总结
 title: 2022年终总结
-date: '2022-12-31'
+date: 2022-12-31
 banner_y: 0.70626
 ---
 

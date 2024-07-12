@@ -1,9 +1,9 @@
 ---
-banner: ./subtype.png
+banner: "./subtype.png"
 category: 编程语言
 title: Rust中的子类型与变体
 excerpt: 协变，逆变和不变
-date: '2022-08-31'
+date: 2022-08-31
 banner_y: 0.19375
 ---
 

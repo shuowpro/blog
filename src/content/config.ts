@@ -18,7 +18,7 @@ const BlogPosts = defineCollection({
         banner: image(),
         banner_x: z.number().optional(),
         banner_y: z.number().optional(),
-        date: z.string().transform((str) => new Date(str)),
+        date: z.date(),
       })
       .transform((data) => ({
         ...data,

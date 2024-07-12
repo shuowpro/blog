@@ -15,6 +15,7 @@
               "state": {
                 "file": "template/blog.md",
                 "mode": "preview",
+                "backlinks": false,
                 "source": true
               }
             }
@@ -37,6 +38,7 @@
               "state": {
                 "file": "template/blog.md",
                 "mode": "source",
+                "backlinks": false,
                 "source": true
               }
             }
@@ -47,9 +49,10 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "template/blog.md",
-                "mode": "source",
-                "source": false
+                "file": "blog/Rust设计模式 —— 新类型/index.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
               }
             }
           }
@@ -110,24 +113,25 @@
   "left-ribbon": {
     "hiddenItems": {
       "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false
     }
   },
-  "active": "c7b90b10929469e9",
+  "active": "ac19c768d42f4fc9",
   "lastOpenFiles": [
-    "template/blog.md",
+    "blog/2022年终总结/index.md",
+    "blog/2022年终总结/Bk9lJfGyIMWqR6i.png",
+    "blog/面向感知准确的色彩空间/index.md",
+    "blog/未来两年的VR/index.md",
+    "blog/子类型与协变/index.md",
+    "blog/子类型与协变/subtype.png",
+    "blog/Rust设计模式 —— 新类型/index.md",
     "blog/测试/index.md",
+    "template/blog.md",
     "blog/测试",
     "blog/ 测试/index.md",
-    "blog/2022年终总结/Bk9lJfGyIMWqR6i.png",
     "blog/ 测试",
     "blog/Untitled.md",
-    "blog/Rust设计模式 —— 新类型/index.md",
-    "blog/2022年终总结/index.md",
     "template"
   ]
 }

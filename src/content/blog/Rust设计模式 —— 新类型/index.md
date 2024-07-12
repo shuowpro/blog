@@ -1,9 +1,9 @@
 ---
-banner: ./rust-logo.png
+banner: "./rust-logo.png"
 category: 编程语言
 title: Rust设计模式 —— 新类型
 excerpt: 绕过孤儿规则，给标准库和第三方库的类型增加新成员函数
-date: '2021-10-22'
+date: 2021-10-22
 banner_y: 0.48438
 ---
 
