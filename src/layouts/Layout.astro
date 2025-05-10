@@ -1,0 +1,39 @@
+---
+import './src/styles/global.css'
+import ToggleTheme from '../components/ToggleTheme.astro'
+import Header from '../components/Header.astro'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <div class="fixed left-0 top-0 h-full w-1/3 opacity-20 pointer-events-none">
+      <svg viewBox="0 0 200 800" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M100,0 Q150,100 100,200 Q50,300 100,400 Q150,500 100,600 Q50,700 100,800"
+          fill="none"
+          stroke="white"
+          stroke-width="0.5"></path>
+        <path
+          d="M80,0 Q130,100 80,200 Q30,300 80,400 Q130,500 80,600 Q30,700 80,800"
+          fill="none"
+          stroke="white"
+          stroke-width="0.3"></path>
+        <path
+          d="M120,0 Q170,100 120,200 Q70,300 120,400 Q170,500 120,600 Q70,700 120,800"
+          fill="none"
+          stroke="white"
+          stroke-width="0.3"></path>
+      </svg>
+    </div>
+    <Header />
+    <slot />
+  </body>
+</html>

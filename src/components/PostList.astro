@@ -1,0 +1,58 @@
+---
+export interface Props {
+  posts: BlogEntry[]
+}
+import type { BlogEntry } from '../types'
+import { getPublishDate, estimateReadingTime , getPostTitle, formatDate} from '../utils'
+import PostMetadata from './PostMetadata.astro'
+
+const { posts } = Astro.props
+
+const groupedPosts = posts.reduce(
+  (acc, post) => {
+    const date = getPublishDate(post)
+    if (!date) return acc
+    const year = date.getFullYear()
+    if (!acc[year]) {
+      acc[year] = []
+    }
+    acc[year].push(post)
+    return acc
+  },
+  {} as Record<number, BlogEntry[]>
+)
+
+const sortedYears = Object.keys(groupedPosts)
+  .map(Number)
+  .sort((a, b) => b - a)
+
+console.log(groupedPosts)
+---
+
+<main class="container mx-auto px-4 py-12">
+  <div class="max-w-3xl mx-auto">
+    {
+      sortedYears.map((year) => (
+        <div class="mb-20">
+          <h2 class="text-[120px] font-bold text-gray-900 mb-6">{year}</h2>
+          <div class="space-y-6">
+            {groupedPosts[year].map((post) => 
+                (
+              <article class="group">
+                <a href=`/post/${getPostTitle(post)}` class="block">
+                  <div class="flex flex-col">
+                    <h3 class="text-xl font-medium group-hover:text-white transition-colors">
+                      {getPostTitle(post)}
+                    </h3>
+                    <PostMetadata post={post} />
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+    </div>
+  </div>
+</main>

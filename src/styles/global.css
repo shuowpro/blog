@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+  body {
+    @apply bg-black text-gray-200;
+  }
+}
+
+/* 优化的文章内容样式 */
+.prose {
+  @apply text-gray-300 text-lg leading-relaxed;
+  max-width: 100%;
+}
+
+.prose h1 {
+  @apply text-4xl font-bold text-white mt-10 mb-6;
+}
+
+.prose h2 {
+  @apply text-3xl font-bold text-white mt-12 mb-6;
+}
+
+.prose h3 {
+  @apply text-2xl font-bold text-white mt-10 mb-4;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-xl font-bold text-white mt-8 mb-4;
+}
+
+.prose p {
+  @apply text-lg mb-8 leading-relaxed;
+}
+
+.prose a {
+  @apply text-blue-400 hover:text-blue-300 transition-colors underline underline-offset-2;
+}
+
+.prose strong {
+  @apply text-white font-semibold;
+}
+
+.prose code {
+  @apply text-gray-300 bg-gray-800 px-1.5 py-0.5 rounded text-base;
+}
+
+.prose pre {
+  @apply bg-gray-900 rounded-lg p-5 my-8 overflow-x-auto;
+}
+
+.prose pre code {
+  @apply bg-transparent p-0 text-sm leading-relaxed;
+}
+
+.prose img {
+  @apply rounded-lg my-10 w-full;
+}
+
+.prose ul,
+.prose ol {
+  @apply my-8 pl-8;
+}
+
+.prose li {
+  @apply mb-3;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-700 pl-6 italic text-gray-400 my-8;
+}
+
+.prose table {
+  @apply w-full my-8;
+}
+
+.prose table th {
+  @apply bg-gray-800 text-left p-3 font-semibold text-white;
+}
+
+.prose table td {
+  @apply border-t border-gray-800 p-3;
+}
+
+/* 代码块语法高亮样式优化 */
+.prose pre code .comment {
+  @apply text-gray-500;
+}
+
+.prose pre code .keyword {
+  @apply text-purple-400;
+}
+
+.prose pre code .string {
+  @apply text-green-400;
+}
+
+.prose pre code .number {
+  @apply text-yellow-400;
+}
+
+.prose pre code .function {
+  @apply text-blue-400;
+}
