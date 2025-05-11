@@ -9,6 +9,8 @@ console.log(
   Boolean(import.meta.env.NOTION_DATABASE_ID)
 )
 
+console.log('env', JSON.stringify(import.meta.env))
+
 const blog = defineCollection({
   loader: notionLoader({
     auth: import.meta.env.NOTION_TOKEN,
