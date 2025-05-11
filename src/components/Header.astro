@@ -1,0 +1,71 @@
+---
+// export interface Props {
+//   navBar: NavBarItem[]
+// }
+import { GithubIcon, TwitterIcon } from '@lucide/astro'
+// import SiteTitle from 'virtual:vitesse/components/SiteTitle'
+
+// const { navBar } = Astro.props
+type LabelLink = {
+  href: string
+  label: string
+}
+
+type IconLink = {
+  href: string
+  icon: any
+}
+
+const internalLink: LabelLink[] = [
+  // {
+  //   href: '/',
+  //   label: 'Home',
+  // },
+  {
+    href: '/blog',
+    label: 'Blog',
+  },
+]
+
+const externalLink: IconLink[] = [
+  {
+    href: 'https://github.com/shuowpro',
+    icon: GithubIcon,
+  },
+  {
+    href: 'https://x.com/suwakopro',
+    icon: TwitterIcon,
+  },
+]
+---
+
+<header class="container mx-auto px-4 py-6 flex justify-between items-center">
+  <a href="/" class="text-white font-light text-2xl">
+    <span class="font-serif italic">ef</span>
+  </a>
+  <div class="flex items-center space-x-6">
+    <nav class="hidden md:flex space-x-6">
+      {
+        internalLink.map((item) => (
+          <a href={item.href} class="hover:text-white transition-colors">
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="flex items-center, space-x-6">
+      {
+        externalLink.map((item) => (
+          <a href={item.href} class="text-gray-400 hover:text-white">
+            <item.icon class="w-5 h-5" />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+  <!-- <SiteTitle {...Astro.props} /> -->
+
+  <!-- <ScrollToTop {...Astro.props} /> -->
+
+  <!-- <NavBar navBar={navBar} /> -->
+</header>

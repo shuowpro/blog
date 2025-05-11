@@ -1,32 +1,19 @@
+// @ts-check
 import { defineConfig } from 'astro/config'
-import react from '@astrojs/react'
-import tailwind from '@astrojs/tailwind'
-import rehypeWrap from 'rehype-wrap'
 
-import icon from 'astro-icon'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.suwako.dev',
-  integrations: [
-    react(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
-    icon(),
-  ],
-  markdown: {
-    rehypePlugins: [
-      [
-        rehypeWrap,
-        {
-          selector: 'table',
-          wrapper: 'div.table-overflow-container',
-        },
-      ],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  image: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.amazonaws.com',
+      },
     ],
-    shikiConfig: {
-      theme: 'tokyo-night',
-    },
   },
 })

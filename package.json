@@ -1,45 +1,22 @@
 {
-  "name": "astro-test",
+  "name": "",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.0",
-    "@astrojs/react": "^3.6.0",
-    "@astrojs/rss": "^4.0.7",
-    "@astrojs/tailwind": "^5.1.0",
-    "@iconify-json/mdi": "^1.1.67",
-    "@radix-ui/react-dropdown-menu": "^2.1.1",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "astro": "^4.11.5",
-    "astro-icon": "^1.1.0",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.1",
-    "date-fns": "^3.6.0",
-    "lucide-react": "^0.403.0",
-    "markdown-it": "^14.1.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "rehype-wrap": "^1.1.0",
-    "sanitize-html": "^2.13.0",
-    "sharp": "^0.33.4",
-    "tailwind-merge": "^2.4.0",
-    "tailwindcss": "^3.4.4",
-    "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.5.3"
+    "@astrojs/rss": "^4.0.11",
+    "@lucide/astro": "^0.509.0",
+    "@tailwindcss/vite": "^4.1.6",
+    "astro": "^5.7.12",
+    "tailwindcss": "^4.1.6"
   },
-  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903",
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13",
-    "@types/markdown-it": "^14.1.1",
-    "@types/sanitize-html": "^2.11.0"
+    "@chlorinec-pkgs/notion-astro-loader": "^1.1.1",
+    "fs-extra": "^11.3.0"
   }
 }

@@ -1,0 +1,91 @@
+---
+import type { GetStaticPaths } from 'astro'
+
+import {
+  formatDate,
+  getPostTitle,
+  getPublishDate,
+  getCoverImageUrl,
+} from '../../utils'
+import { getCollection } from 'astro:content'
+import { ArrowLeft, Clock, Calendar } from '@lucide/astro'
+import Layout from '../../layouts/Layout.astro'
+import Badge from '../../components/Badge.astro'
+import PostMetadata from '../../components/PostMetadata.astro'
+import BadgeList from '../../components/BadgeList.astro'
+import type { BlogEntry } from '../../types'
+
+export const getStaticPaths = (async () => {
+  const blog = await getCollection('blog')
+  const slugs = blog.map((post) => {
+    const slug = getPostTitle(post) || ''
+    return {
+      params: { slug },
+    }
+  })
+
+  return slugs
+}) satisfies GetStaticPaths
+
+const { slug } = Astro.params
+
+const blog = await getCollection('blog')
+const post = blog.find((post) => getPostTitle(post) === slug) as BlogEntry
+
+const coverImageUrl = getCoverImageUrl(post)
+---
+
+<Layout>
+  <main class="container mx-auto px-4 py-12">
+    <div class="max-w-3xl mx-auto">
+      {/* Back button */}
+      <a
+        href="/"
+        class="inline-flex items-center text-gray-400 hover:text-white mb-8 transition-colors"
+      >
+        <ArrowLeft class="h-4 w-4 mr-2" />
+        <span>返回首页</span>
+      </a>
+
+      {/* Article header */}
+      <article>
+        <div class="mb-12">
+          <BadgeList post={post} />
+          <h1 class="text-4xl font-bold text-white mb-4">
+            {getPostTitle(post)}
+          </h1>
+          <PostMetadata post={post} />
+          <!-- <div class="py-8 border-t border-gray-800">
+            <div class="flex items-center">
+              <div class="h-12 w-12 rounded-full overflow-hidden mr-4">
+                <img
+                  src="/placeholder.svg?height=48&width=48"
+                  alt="作者头像"
+                  width={48}
+                  height={48}
+                  class="object-cover"
+                />
+              </div>
+              <div>
+                <h3 class="text-white font-medium">张开发</h3>
+                <p class="text-gray-400 text-sm">前端工程师 & 技术作家</p>
+              </div>
+            </div>
+          </div> -->
+          {
+            coverImageUrl && (
+              <div class="aspect-[16/9] relative rounded-lg overflow-hidden mb-8">
+                <img src={coverImageUrl} class="object-cover w-full" />
+              </div>
+            )
+          }
+        </div>
+
+        <div
+          set:html={post.rendered?.html}
+          class="prose prose-invert prose-lg max-w-none"
+        />
+      </article>
+    </div>
+  </main>
+</Layout>

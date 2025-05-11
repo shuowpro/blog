@@ -1,0 +1,22 @@
+---
+export interface Props {
+  post: BlogEntry
+}
+
+import { Calendar, Clock } from '@lucide/astro'
+import { formatDate, getPublishDate, estimateReadingTime } from '../utils'
+import type { BlogEntry } from '../types'
+
+const { post } = Astro.props
+---
+
+<div class="flex items-center text-gray-500 text-sm mb-6 mt-1">
+  <div class="flex items-center mr-4">
+    <Calendar class="h-4 w-4 mr-1" />
+    <span>{formatDate(getPublishDate(post))}</span>
+  </div>
+  <div class="flex items-center">
+    <Clock class="h-4 w-4 mr-1" />
+    <span>阅读时间: {estimateReadingTime(post)}分钟</span>
+  </div>
+</div>
