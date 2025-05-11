@@ -3,12 +3,7 @@ export interface Props {
   posts: BlogEntry[]
 }
 import type { BlogEntry } from '../types'
-import {
-  getPublishDate,
-  estimateReadingTime,
-  getPostTitle,
-  formatDate,
-} from '../utils'
+import { getPublishDate, getPostTitle } from '../utils'
 import PostMetadata from './PostMetadata.astro'
 
 const { posts } = Astro.props
@@ -40,13 +35,13 @@ const sortedYears = Object.keys(groupedPosts)
           <div class="mt-28 relative h-10">
             <h2
               class="
-              text-[180px] leading-[0.8] mb-12 font-bold text-left -ml-4
-              opacity-30
-              absolute
-              -left-10
-              -top-20
-              z-0
-            "
+                text-[180px] leading-[0.8] mb-12 font-bold text-left -ml-4
+                opacity-30
+                absolute
+                -left-10
+                -top-20
+                z-0
+              "
             >
               {year}
             </h2>
