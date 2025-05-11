@@ -3,7 +3,12 @@ export interface Props {
   posts: BlogEntry[]
 }
 import type { BlogEntry } from '../types'
-import { getPublishDate, estimateReadingTime , getPostTitle, formatDate} from '../utils'
+import {
+  getPublishDate,
+  estimateReadingTime,
+  getPostTitle,
+  formatDate,
+} from '../utils'
 import PostMetadata from './PostMetadata.astro'
 
 const { posts } = Astro.props
@@ -25,23 +30,33 @@ const groupedPosts = posts.reduce(
 const sortedYears = Object.keys(groupedPosts)
   .map(Number)
   .sort((a, b) => b - a)
-
-console.log(groupedPosts)
 ---
 
 <main class="container mx-auto px-4 py-12">
   <div class="max-w-3xl mx-auto">
     {
-      sortedYears.map((year) => (
-        <div class="mb-20">
-          <h2 class="text-[120px] font-bold text-gray-900 mb-6">{year}</h2>
-          <div class="space-y-6">
-            {groupedPosts[year].map((post) => 
-                (
+      sortedYears.map((year, index) => (
+        <div class="mb-28">
+          <div class="mt-28 relative h-10">
+            <h2
+              class="
+              text-[180px] leading-[0.8] mb-12 font-bold text-left -ml-4
+              opacity-30
+              absolute
+              -left-10
+              -top-20
+              z-0
+            "
+            >
+              {year}
+            </h2>
+          </div>
+          <div class="space-y-6 relative">
+            {groupedPosts[year].map((post) => (
               <article class="group">
-                <a href=`/post/${getPostTitle(post)}` class="block">
+                <a href={`/post/${getPostTitle(post)}`} class="block">
                   <div class="flex flex-col">
-                    <h3 class="text-xl font-medium group-hover:text-white transition-colors">
+                    <h3 class="text-xl font-medium text-gray-200 group-hover:text-white transition-colors">
                       {getPostTitle(post)}
                     </h3>
                     <PostMetadata post={post} />
@@ -53,6 +68,5 @@ console.log(groupedPosts)
         </div>
       ))
     }
-    </div>
   </div>
 </main>
