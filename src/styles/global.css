@@ -106,3 +106,7 @@
 .prose pre code .function {
   @apply text-blue-400;
 }
+
+.table-wrapper {
+  @apply overflow-x-auto;
+}
