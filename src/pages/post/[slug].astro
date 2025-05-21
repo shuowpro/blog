@@ -1,18 +1,12 @@
 ---
 import type { GetStaticPaths } from 'astro'
-
-import {
-  formatDate,
-  getPostTitle,
-  getPublishDate,
-  getCoverImageUrl,
-} from '../../utils'
+import { getPostTitle, getCoverImageUrl } from '../../utils'
 import { getCollection } from 'astro:content'
 import { ArrowLeft, Clock, Calendar } from '@lucide/astro'
 import Layout from '../../layouts/Layout.astro'
-import Badge from '../../components/Badge.astro'
 import PostMetadata from '../../components/PostMetadata.astro'
 import BadgeList from '../../components/BadgeList.astro'
+import Hero from '../../components/Hero.astro'
 import type { BlogEntry } from '../../types'
 
 export const getStaticPaths = (async () => {
@@ -72,13 +66,18 @@ const coverImageUrl = getCoverImageUrl(post)
               </div>
             </div>
           </div> -->
-          {
+          <!-- {
             coverImageUrl && (
               <div class="relative rounded-lg overflow-hidden mb-8">
-                <img src={coverImageUrl} class="object-cover w-full" />
+                <img
+                  src={coverImageUrl}
+                  class="object-cover w-full"
+                  alt="hello"
+                />
               </div>
             )
-          }
+          } -->
+          {coverImageUrl && <Hero imagePath={coverImageUrl} />}
         </div>
 
         <div

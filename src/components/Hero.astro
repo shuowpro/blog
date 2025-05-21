@@ -1,0 +1,17 @@
+---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+interface Props {
+  imagePath: string
+}
+
+const { imagePath } = Astro.props
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/assets/images/notion/**/*'
+)
+---
+
+<div class="relative rounded-lg overflow-hidden mb-8">
+  <Image src={images[imagePath]()} class="object-cover w-full" alt="hello" />
+</div>

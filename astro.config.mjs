@@ -9,12 +9,20 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  // image: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: 'https',
+  //       hostname: '**.amazonaws.com',
+  //     },
+  //   ],
+  // },
   image: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**.amazonaws.com',
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
       },
-    ],
+    },
   },
 })

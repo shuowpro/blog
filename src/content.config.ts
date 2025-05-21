@@ -41,6 +41,8 @@ const blog = defineCollection({
       [rehypeShiki, { theme: 'github-dark-high-contrast' }],
       rehypeWrapTables,
     ],
+    experimentalCacheImageInData: true,
+    experimentalRootSourceAlias: '/src',
   }),
 })
 
