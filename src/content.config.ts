@@ -1,49 +1,31 @@
-import { defineCollection } from 'astro:content'
-import rehypeShiki from '@shikijs/rehype'
-import { notionLoader } from '@chlorinec-pkgs/notion-astro-loader'
-import { visit } from 'unist-util-visit'
-import type { Node } from 'unist'
+import { glob } from 'astro/loaders'
+import { defineCollection, z } from 'astro:content'
 
-// 创建自定义rehype插件，用于将表格包装在可滚动div中
-function rehypeWrapTables() {
-  return (tree: Node) => {
-    visit(
-      tree,
-      { tagName: 'table' },
-      (node: any, index: number, parent: any) => {
-        // 创建包装div节点
-        const wrapper = {
-          type: 'element',
-          tagName: 'div',
-          properties: { className: ['table-wrapper'] },
-          children: [node],
-        }
-
-        // 替换原始表格节点
-        parent.children[index] = wrapper
-      }
-    )
-  }
-}
-
-const blog = defineCollection({
-  loader: notionLoader({
-    auth: import.meta.env.NOTION_TOKEN,
-    database_id: import.meta.env.NOTION_DATABASE_ID,
-    imageSavePath: 'assets/images/notion',
-    filter: {
-      property: '状态',
-      select: {
-        equals: '已发布',
-      },
-    },
-    rehypePlugins: [
-      [rehypeShiki, { theme: 'github-dark-high-contrast' }],
-      rehypeWrapTables,
-    ],
-    experimentalCacheImageInData: true,
-    experimentalRootSourceAlias: '/src',
+const posts = defineCollection({
+  loader: glob({
+    pattern: '**/*.md',
+    base: 'src/contents/posts',
+  }),
+  schema: z.object({
+    title: z.string(),
+    published: z.date(),
+    draft: z.boolean().optional(),
+    description: z.string().optional(),
+    cover: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    category: z.string().optional(),
+    author: z.string().optional(),
+    sourceLink: z.string().optional(),
+    licenseName: z.string().optional(),
+    licenseUrl: z.string().optional(),
   }),
 })
 
-export const collections = { blog }
+const specs = defineCollection({
+  loader: glob({
+    pattern: '**/*.md',
+    base: 'src/contents/specs',
+  }),
+})
+
+export const collections = { posts, specs }
