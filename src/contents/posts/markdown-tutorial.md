@@ -2,12 +2,15 @@
 title: Markdown Tutorial
 published: 2025-01-20
 description: A simple example of a Markdown blog post.
-tags: [Markdown, Blogging]
+tags:
+  - Markdown
+  - Blogging
 category: Examples
-licenseName: 'Unlicensed'
+licenseName: Unlicensed
 author: emn178
-sourceLink: 'https://github.com/emn178/markdown'
+sourceLink: https://github.com/emn178/markdown
 draft: false
+preview: ../../assets/cover/WOCY_Zo__Qqn0VELOqPN8_6956dcea992842eda6e814b1ac7ce2d3.png
 ---
 
 # Markdown Tutorial
