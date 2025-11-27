@@ -41,9 +41,10 @@
           "single": true
         },
         {
+          "title": "content preview",
           "name": "preview",
-          "type": "string",
-          "single": true
+          "type": "image",
+          "isPreviewImage": true
         },
         {
           "name": "tags",
