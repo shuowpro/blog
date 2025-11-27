@@ -2,6 +2,7 @@
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
   "frontMatter.framework.id": "astro",
   "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.preview.pathName": "posts",
   "frontMatter.content.publicFolder": {
     "path": "src/assets",
     "relative": true
@@ -49,31 +50,6 @@
         {
           "name": "tags",
           "type": "tags"
-        },
-        {
-          "name": "category",
-          "type": "string",
-          "single": true
-        },
-        {
-          "name": "author",
-          "type": "string",
-          "single": true
-        },
-        {
-          "name": "sourceLink",
-          "type": "string",
-          "single": true
-        },
-        {
-          "name": "licenseName",
-          "type": "string",
-          "single": true
-        },
-        {
-          "name": "licenseUrl",
-          "type": "string",
-          "single": true
         }
       ]
     },

@@ -5,6 +5,7 @@ fmContentType: posts
 tags:
     - 随笔
 description: 回顾2022年，分享工作与技术的成长，展望未来的学习与发展，期待健康与顺利的明天。
+preview: ../../assets/cover/WOCY_Zo__Qqn0VELOqPN8_6956dcea992842eda6e814b1ac7ce2d3.png
 ---
 
 不知不觉一年又过去了，不得不感叹时间过的真的好快。总感觉自己这一年做了一些事情，又或者什么都没做。似乎与前些年相比，唯一的变化就是回到了办公室工作。
