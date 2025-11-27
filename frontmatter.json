@@ -9,14 +9,12 @@
   "frontMatter.content.pageFolders": [
     {
       "title": "posts",
-      "path": "[[workspace]]/src/contents/posts",
-      "previewPath": "/posts/"
+      "path": "[[workspace]]/src/contents/posts"
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "posts",
-      "slugTemplate": "{{slugifiedFileName}}",
       "pageBundle": false,
       "clearEmpty": true,
       "fields": [
@@ -43,7 +41,7 @@
           "single": true
         },
         {
-          "name": "cover",
+          "name": "preview",
           "type": "string",
           "single": true
         },
@@ -77,8 +75,13 @@
           "single": true
         }
       ]
+    },
+    {
+      "name": "specs",
+      "pageBundle": false,
+      "clearEmpty": true,
+      "fields": []
     }
   ],
-  "frontMatter.git.enabled": true,
-  "frontMatter.framework.startCommand": "pnpm dev"
+  "frontMatter.git.enabled": true
 }
