@@ -10,7 +10,8 @@
   "frontMatter.content.pageFolders": [
     {
       "title": "posts",
-      "path": "[[workspace]]/src/contents/posts"
+      "path": "[[workspace]]/src/contents/posts",
+      "filePrefix": null
     }
   ],
   "frontMatter.taxonomy.contentTypes": [
@@ -52,12 +53,6 @@
           "type": "tags"
         }
       ]
-    },
-    {
-      "name": "specs",
-      "pageBundle": false,
-      "clearEmpty": true,
-      "fields": []
     }
   ],
   "frontMatter.git.enabled": true
