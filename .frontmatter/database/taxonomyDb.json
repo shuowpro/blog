@@ -1,1 +1,10 @@
-{"taxonomy":{"tags":["Blogging","Example","Markdown","Video"],"categories":[]}}
+{
+    "taxonomy": {
+        "tags": [
+            "随笔",
+            "经济",
+            "科技"
+        ],
+        "categories": []
+    }
+}
