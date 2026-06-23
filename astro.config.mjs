@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import svelte from "@astrojs/svelte";
 import swup from "@swup/astro";
+import { unified } from "@astrojs/markdown-remark";
 
 import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
@@ -38,19 +39,21 @@ export default defineConfig({
     pagefind(),
   ],
   markdown: {
-    shikiConfig: {
-      theme: "github-dark-default",
-    },
-    remarkPlugins: [remarkReadingTime, remarkMath],
-    rehypePlugins: [
-      rehypeSlug,
-      rehypeKatex,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "prepend",
-        },
+    processor: unified({
+      shikiConfig: {
+        theme: "github-dark-default",
+      },
+      remarkPlugins: [remarkReadingTime, remarkMath],
+      rehypePlugins: [
+        rehypeSlug,
+        rehypeKatex,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: "prepend",
+          },
+        ],
       ],
-    ],
+    }),
   },
 });
