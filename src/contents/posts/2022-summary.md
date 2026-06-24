@@ -3,7 +3,7 @@ title: 2022年终总结
 published: 2023-01-01T00:01:12.000Z
 fmContentType: posts
 tags:
-    - 随笔
+  - 随笔
 description: 回顾2022年，分享工作与技术的成长，展望未来的学习与发展，期待健康与顺利的明天。
 preview: ../../assets/cover/WOCY_Zo__Qqn0VELOqPN8_6956dcea992842eda6e814b1ac7ce2d3.png
 ---

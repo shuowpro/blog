@@ -1,11 +1,11 @@
-import { glob } from 'astro/loaders'
-import { defineCollection } from 'astro:content'
-import { z } from 'astro/zod'
+import { glob } from "astro/loaders";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 const posts = defineCollection({
   loader: glob({
-    pattern: '**/*.md',
-    base: 'src/contents/posts',
+    pattern: "**/*.md",
+    base: "src/contents/posts",
   }),
   schema: ({ image }) =>
     z.object({
@@ -21,13 +21,13 @@ const posts = defineCollection({
       licenseName: z.string().optional(),
       licenseUrl: z.string().optional(),
     }),
-})
+});
 
 const specs = defineCollection({
   loader: glob({
-    pattern: '**/*.md',
-    base: 'src/contents/specs',
+    pattern: "**/*.md",
+    base: "src/contents/specs",
   }),
-})
+});
 
-export const collections = { posts, specs }
+export const collections = { posts, specs };

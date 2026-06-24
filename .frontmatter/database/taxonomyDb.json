@@ -1,10 +1,6 @@
 {
-    "taxonomy": {
-        "tags": [
-            "随笔",
-            "经济",
-            "科技"
-        ],
-        "categories": []
-    }
+  "taxonomy": {
+    "tags": ["随笔", "经济", "科技"],
+    "categories": []
+  }
 }
