@@ -9,8 +9,8 @@
   let searchKeyword = "";
   let searchResult: any[] = [];
 
-  let resultPannel: HTMLDivElement;
-  let searchBar: HTMLDivElement;
+  let resultPannel: HTMLDivElement = null!;
+  let searchBar: HTMLDivElement = null!;
 
   let search = (keyword: string) => {};
 
