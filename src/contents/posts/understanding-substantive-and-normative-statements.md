@@ -5,7 +5,7 @@ fmContentType: posts
 tags:
   - 随笔
 description: 理解实质性陈述与规范性陈述的区别，以及为什么这种区分对于理性讨论至关重要。
-preview: ../../assets/cover/sky-shrine-maiden-cover.png
+preview: ../../assets/cover/mountain-overlook-cover.png
 ---
 
 在开始之前，我想先说几句关于这个博客的话。你在这里看到的大部分内容，都是我试图搞清楚某件事到底是不是真的。我对"应不应该"这类问题不太感兴趣——每个人都有自己的价值观，讨论价值观很难有结果。但"是不是"这个问题不一样，它有答案，只是答案有时候不那么好听。
