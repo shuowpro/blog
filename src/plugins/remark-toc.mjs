@@ -10,17 +10,13 @@ function simplifyTOC(ast) {
     }
 
     if (node.type === "listItem") {
-      const paragraph = node.children.find(
-        (child) => child.type === "paragraph",
-      );
+      const paragraph = node.children.find((child) => child.type === "paragraph");
       const link = paragraph.children.find((child) => child.type === "link");
       const text = link.children.find((child) => child.type === "text");
       return {
         title: text.value,
         slug: slug(text.value),
-        children: node.children
-          .filter((child) => child.type === "list")
-          .flatMap(traverse),
+        children: node.children.filter((child) => child.type === "list").flatMap(traverse),
       };
     }
     return null;

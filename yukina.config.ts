@@ -1,51 +1,51 @@
-import I18nKeys from './src/locales/keys'
-import type { Configuration } from './src/types/config'
+import I18nKeys from "./src/locales/keys";
+import type { Configuration } from "./src/types/config";
 
 const YukinaConfig: Configuration = {
-  title: '旧约酒馆',
-  subTitle: '我们的超自然的历史',
-  brandTitle: '旧约酒馆',
+  title: "旧约酒馆",
+  subTitle: "我们的超自然的历史",
+  brandTitle: "旧约酒馆",
 
-  description: '欢迎来到旧约酒馆',
+  description: "欢迎来到旧约酒馆",
 
-  site: 'https://suwako.dev/',
+  site: "https://suwako.dev/",
 
-  locale: 'zh-CN', // set for website language and date format
+  locale: "zh-CN", // set for website language and date format
 
   navigators: [
     {
       nameKey: I18nKeys.nav_bar_home,
-      href: '/',
+      href: "/",
     },
     {
       nameKey: I18nKeys.nav_bar_archive,
-      href: '/archive',
+      href: "/archive",
     },
     {
       nameKey: I18nKeys.nav_bar_about,
-      href: '/about',
+      href: "/about",
     },
     {
       nameKey: I18nKeys.nav_bar_github,
-      href: 'https://github.com/shuowpro',
+      href: "https://github.com/shuowpro",
     },
   ],
 
-  username: 'suwako',
-  sign: '欢迎来到旧约酒馆',
-  avatarUrl: '/avatar.avif',
+  username: "suwako",
+  sign: "欢迎来到旧约酒馆",
+  avatarUrl: "/avatar.avif",
   socialLinks: [
     {
-      icon: 'line-md:github-loop',
-      link: 'https://github.com/shuowpro',
+      icon: "line-md:github-loop",
+      link: "https://github.com/shuowpro",
     },
     {
-      icon: 'mingcute:bilibili-line',
-      link: 'https://space.bilibili.com/727414',
+      icon: "mingcute:bilibili-line",
+      link: "https://space.bilibili.com/727414",
     },
     {
-      icon: 'mingcute:netease-music-line',
-      link: 'https://music.163.com/#/user/home?id=40945415',
+      icon: "mingcute:netease-music-line",
+      link: "https://music.163.com/#/user/home?id=40945415",
     },
   ],
   maxSidebarCategoryChip: 6, // It is recommended to set it to a common multiple of 2 and 3
@@ -54,25 +54,25 @@ const YukinaConfig: Configuration = {
   maxFooterTagChip: 24,
 
   banners: [
-    'https://s2.loli.net/2025/01/25/PBvHFjr5yDu6t4a.webp',
-    'https://s2.loli.net/2025/01/25/6bKcwHZigzlM4mJ.webp',
-    'https://s2.loli.net/2025/01/25/H9WgEK6qNTcpFiS.webp',
-    'https://s2.loli.net/2025/01/25/njNVtuUMzxs81RI.webp',
-    'https://s2.loli.net/2025/01/25/tozsJ8QHAjFN3Mm.webp',
-    'https://s2.loli.net/2025/01/25/Pm89OveZq7NWUxF.webp',
-    'https://s2.loli.net/2025/01/25/UCYKvc1ZhgPHB9m.webp',
-    'https://s2.loli.net/2025/01/25/JjpLOW8VSmufzlA.webp',
+    "https://s2.loli.net/2025/01/25/PBvHFjr5yDu6t4a.webp",
+    "https://s2.loli.net/2025/01/25/6bKcwHZigzlM4mJ.webp",
+    "https://s2.loli.net/2025/01/25/H9WgEK6qNTcpFiS.webp",
+    "https://s2.loli.net/2025/01/25/njNVtuUMzxs81RI.webp",
+    "https://s2.loli.net/2025/01/25/tozsJ8QHAjFN3Mm.webp",
+    "https://s2.loli.net/2025/01/25/Pm89OveZq7NWUxF.webp",
+    "https://s2.loli.net/2025/01/25/UCYKvc1ZhgPHB9m.webp",
+    "https://s2.loli.net/2025/01/25/JjpLOW8VSmufzlA.webp",
   ],
 
-  slugMode: 'RAW', // 'RAW' | 'HASH'
+  slugMode: "RAW", // 'RAW' | 'HASH'
 
   license: {
-    name: 'CC BY-NC-SA 4.0',
-    url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+    name: "CC BY-NC-SA 4.0",
+    url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   },
 
   // WIP functions
-  bannerStyle: 'LOOP', // 'loop' | 'static' | 'hidden'
-}
+  bannerStyle: "LOOP", // 'loop' | 'static' | 'hidden'
+};
 
-export default YukinaConfig
+export default YukinaConfig;

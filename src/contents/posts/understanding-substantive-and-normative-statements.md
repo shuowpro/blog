@@ -3,7 +3,7 @@ title: 实质性陈述与规范性陈述
 published: 2026-04-17T23:01:59.152Z
 fmContentType: posts
 tags:
-    - 随笔
+  - 随笔
 description: 理解实质性陈述与规范性陈述的区别，以及为什么这种区分对于理性讨论至关重要。
 preview: ../../assets/cover/abef9240089cfe5c511b850b1281d57c.jpg
 ---
