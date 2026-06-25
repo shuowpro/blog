@@ -1,11 +1,11 @@
 ---
-import { getCollection } from 'astro:content'
 import { IdToSlug } from '../../utils/hash'
 import PostLayout from '../../layouts/PostLayout.astro'
 import { render } from 'astro:content'
+import { GetVisiblePosts } from '../../utils/content'
 
 export async function getStaticPaths() {
-  const postEntries = await getCollection('posts')
+  const postEntries = await GetVisiblePosts()
   return postEntries.map((entry) => ({
     params: { slug: IdToSlug(entry.id) },
     props: { entry },
@@ -14,53 +14,30 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props
 const { Content } = await render(entry)
+const license = entry.data.licenseName
+  ? { name: entry.data.licenseName, url: entry.data.licenseUrl }
+  : undefined
 ---
 
-{
-  !entry.data.licenseName && (
-    <PostLayout
-      title={entry.data.title}
-      subTitle={entry.data.description}
-      bannerImage={entry.data.preview?.src}
-      published={entry.data.published}
-    >
-      <div
-        class="hidden"
-        data-pagefind-body
-        data-pagefind-weight="10"
-        data-pagefind-meta="title"
-      >
-        {entry.data.title}
-      </div>
-      <div data-pagefind-body>
-        <Content />
-      </div>
-    </PostLayout>
-  )
-}
-{
-  entry.data.licenseName && (
-    <PostLayout
-      title={entry.data.title}
-      subTitle={entry.data.description}
-      bannerImage={entry.data.preview?.src}
-      published={entry.data.published}
-      license={{ name: entry.data.licenseName, url: entry.data.licenseUrl }}
-      author={entry.data.author}
-      sourceLink={entry.data.sourceLink}
-    >
-      <div
-        class="hidden"
-        data-pagefind-body
-        data-pagefind-weight="10"
-        data-pagefind-meta="title"
-      >
-        {entry.data.title}
-      </div>
-      <div data-pagefind-body>
-        <Content />
-      </div>
-    </PostLayout>
-  )
-}
+<PostLayout
+  title={entry.data.title}
+  subTitle={entry.data.description}
+  bannerImage={entry.data.preview?.src}
+  published={entry.data.published}
+  license={license}
+  author={entry.data.author}
+  sourceLink={entry.data.sourceLink}
+>
+  <div
+    class="hidden"
+    data-pagefind-body
+    data-pagefind-weight="10"
+    data-pagefind-meta="title"
+  >
+    {entry.data.title}
+  </div>
+  <div data-pagefind-body>
+    <Content />
+  </div>
+</PostLayout>
 <!-- <Fragment set:html={tocHTMLString} /> -->
