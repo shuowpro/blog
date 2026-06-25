@@ -1,8 +1,8 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
+import { GetVisiblePosts } from "../utils/content";
 
 export async function GET(context: { site: string }) {
-  const posts = await getCollection("posts");
+  const posts = await GetVisiblePosts();
   return rss({
     title: "a",
     description: "a",

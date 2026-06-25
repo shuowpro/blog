@@ -216,20 +216,18 @@ const navCount = YukinaConfig.navigators.length;
     return cloned;
   };
 
+  const getRequiredElement = <T extends Element>(id: string) => {
+    const element = document.getElementById(id);
+    if (!element) throw new Error(`Missing element: ${id}`);
+    return element as T;
+  };
+
   // get elements
-  const menuSwitcher = document.getElementById(
-    "menu-switcher",
-  ) as HTMLButtonElement;
-  const mobileMenuNav = document.getElementById(
-    "mobile-menu-nav",
-  ) as HTMLUListElement;
+  const menuSwitcher = getRequiredElement<HTMLButtonElement>("menu-switcher");
+  const mobileMenuNav = getRequiredElement<HTMLUListElement>("mobile-menu-nav");
   const mobileMenuNavItems = document.getElementsByClassName("mobile-nav-item");
-  let menuIconClosed = document.getElementById(
-    "menu-icon-closed",
-  ) as any as SVGElement;
-  let menuIconOpened = document.getElementById(
-    "menu-icon-opened",
-  ) as any as SVGElement;
+  let menuIconClosed = getRequiredElement<SVGElement>("menu-icon-closed");
+  let menuIconOpened = getRequiredElement<SVGElement>("menu-icon-opened");
 
   // menu state
   let isMenuOpen = false;
@@ -261,9 +259,12 @@ const navCount = YukinaConfig.navigators.length;
   }
   // click other elements then close menu
   document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+
     if (
-      !menuSwitcher.contains(event.target as any) &&
-      !mobileMenuNav.contains(event.target as any) &&
+      !menuSwitcher.contains(target) &&
+      !mobileMenuNav.contains(target) &&
       isMenuOpen
     ) {
       switchMenuState();
@@ -272,15 +273,9 @@ const navCount = YukinaConfig.navigators.length;
 
   // Theme switcher
   // Get elements
-  const themeSwitcher = document.getElementById(
-    "theme-switcher",
-  ) as HTMLButtonElement;
-  let themeIconLight = document.getElementById(
-    "theme-icon-light",
-  ) as any as SVGElement;
-  let themeIconDark = document.getElementById(
-    "theme-icon-dark",
-  ) as any as SVGElement;
+  const themeSwitcher = getRequiredElement<HTMLButtonElement>("theme-switcher");
+  let themeIconLight = getRequiredElement<SVGElement>("theme-icon-light");
+  let themeIconDark = getRequiredElement<SVGElement>("theme-icon-dark");
 
   // Record the current theme
   let currentTheme = localStorage.getItem("theme") || "light";
