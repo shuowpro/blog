@@ -27,6 +27,7 @@ export default defineConfig({
     swup({
       theme: false,
       containers: ["main", "footer", ".banner-inner"],
+      routes: [{ name: "post", path: "/posts/:slug" }],
       smoothScrolling: true,
       progress: true,
       cache: true,

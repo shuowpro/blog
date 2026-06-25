@@ -11,6 +11,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+<meta name="color-scheme" content="light dark" />
+
+<script is:inline>
+  const storedTheme = (() => {
+    try {
+      return localStorage.getItem("theme");
+    } catch {
+      return null;
+    }
+  })();
+  const systemPrefersDark = window.matchMedia(
+    "(prefers-color-scheme: dark)",
+  ).matches;
+  const theme = storedTheme ?? (systemPrefersDark ? "dark" : "light");
+
+  document.documentElement.setAttribute("data-theme", theme);
+  document.documentElement.classList.toggle("dark", theme === "dark");
+</script>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

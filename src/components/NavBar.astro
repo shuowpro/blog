@@ -282,13 +282,41 @@ const navCount = YukinaConfig.navigators.length;
     "theme-icon-dark",
   ) as any as SVGElement;
 
+  const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  const getSystemTheme = () => (systemThemeQuery.matches ? "dark" : "light");
+  const getStoredTheme = () => {
+    try {
+      return localStorage.getItem("theme");
+    } catch {
+      return null;
+    }
+  };
+  const storeTheme = (theme: string) => {
+    try {
+      localStorage.setItem("theme", theme);
+    } catch {
+      // Ignore storage errors and keep the in-memory theme for this page.
+    }
+  };
+  let themeTransitionTimer: number | undefined;
+
+  const runThemeTransition = () => {
+    document.documentElement.classList.add("theme-transition");
+    window.clearTimeout(themeTransitionTimer);
+    themeTransitionTimer = window.setTimeout(() => {
+      document.documentElement.classList.remove("theme-transition");
+    }, 520);
+  };
+
   // Record the current theme
-  let currentTheme = localStorage.getItem("theme") || "light";
+  let currentTheme = getStoredTheme() ?? getSystemTheme();
 
   // Set theme
-  const setTheme = (theme: string) => {
+  const setTheme = (theme: string, persist = false, animate = false) => {
+    if (animate) runThemeTransition();
     document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+    if (persist) storeTheme(theme);
     currentTheme = theme;
 
     // Show/hide icons for different themes
@@ -305,7 +333,11 @@ const navCount = YukinaConfig.navigators.length;
 
   // Click to switch theme
   themeSwitcher.addEventListener("click", () => {
-    setTheme(currentTheme === "light" ? "dark" : "light");
+    setTheme(currentTheme === "light" ? "dark" : "light", true, true);
+  });
+
+  systemThemeQuery.addEventListener("change", () => {
+    if (!getStoredTheme()) setTheme(getSystemTheme(), false, true);
   });
 
   // Initialize
