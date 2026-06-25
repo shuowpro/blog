@@ -49,6 +49,29 @@ import "overlayscrollbars/overlayscrollbars.css";
     --background-color: oklch(17.5% 0.015 var(--hue));
   }
 
+  :root.theme-transition,
+  :root.theme-transition *,
+  :root.theme-transition *::before,
+  :root.theme-transition *::after {
+    transition:
+      background-color 360ms ease,
+      color 360ms ease,
+      border-color 360ms ease,
+      fill 360ms ease,
+      stroke 360ms ease,
+      box-shadow 360ms ease,
+      opacity 360ms ease !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root.theme-transition,
+    :root.theme-transition *,
+    :root.theme-transition *::before,
+    :root.theme-transition *::after {
+      transition: none !important;
+    }
+  }
+
   .swup-progress-bar {
     height: 5px;
     background-color: var(--primary-color);

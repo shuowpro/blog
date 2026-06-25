@@ -17,7 +17,13 @@ let carouselImgsList = YukinaConfig.banners;
 const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
 ---
 
-<div id="banner" class="banner onload-animation-fade-in">
+<div
+  id="banner"
+  class:list={[
+    "banner onload-animation-fade-in",
+    hasHeaderImg ? "banner-cover" : "banner-carousel",
+  ]}
+>
   <div class="transition-main banner-inner h-full w-full">
     {
       !hasHeaderImg && (
@@ -167,7 +173,7 @@ const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
   }
 
   .cover {
-    @apply absolute left-0 top-0 z-0 block h-[var(--banner-height)] w-full overflow-hidden bg-white;
+    @apply absolute left-0 top-0 z-0 block h-[calc(var(--banner-height)*3/4)] w-full overflow-hidden bg-white lg:h-[var(--banner-height)];
   }
 
   .cover::before {
@@ -200,6 +206,10 @@ const carouselAnimationTime = `${carouselImgsList.length * 6}s`;
   .waves {
     @apply absolute -bottom-[1px] h-[10vh] max-h-[9.375rem] min-h-[3.125rem] w-full;
     @apply md:h-[15vh];
+  }
+
+  .banner-cover .waves {
+    @apply h-[7vh] max-h-24 min-h-12 md:h-[9vh];
   }
 
   .waves > .parallax use {

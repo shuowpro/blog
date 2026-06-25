@@ -20,3 +20,37 @@ html.is-animating.is-leaving .transition-leaving {
   transform: translateY(2rem);
   opacity: 0;
 }
+
+.transition-post-drawer {
+  transform-origin: bottom center;
+}
+
+html.is-changing.to-route-post .transition-leaving,
+html.is-changing.from-route-post .transition-leaving {
+  transition:
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 420ms ease;
+  will-change: transform, opacity;
+}
+
+html.is-animating.to-route-post:not(.is-leaving) .transition-leaving {
+  transform: translateY(72vh);
+  opacity: 0;
+}
+
+html.is-animating.is-leaving.from-route-post .transition-leaving {
+  transform: translateY(72vh);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.is-changing.to-route-post .transition-leaving,
+  html.is-changing.from-route-post .transition-leaving {
+    transition: opacity 160ms ease;
+  }
+
+  html.is-animating.to-route-post:not(.is-leaving) .transition-leaving,
+  html.is-animating.is-leaving.from-route-post .transition-leaving {
+    transform: none;
+  }
+}
