@@ -40,7 +40,6 @@
     "@types/lozad": "^1.16.4",
     "crypto-js": "^4.2.0",
     "mdast-util-to-string": "^4.0.0",
-    "pagefind": "^1.3.0",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.9",
@@ -49,6 +48,7 @@
     "rehype-katex": "^7.0.1",
     "rehype-slug": "^6.0.0",
     "remark-math": "^6.0.0",
+    "sharp": "^0.35.2",
     "vite-plus": "catalog:"
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"

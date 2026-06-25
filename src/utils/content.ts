@@ -35,7 +35,7 @@ export interface ReadingMetadata {
 }
 
 export async function GetVisiblePosts(): Promise<CollectionEntry<"posts">[]> {
-  return getCollection("posts", ({ data }) => {
+  return getCollection("posts", ({ data }: CollectionEntry<"posts">) => {
     return import.meta.env.PROD ? data.draft !== true : true;
   });
 }
