@@ -5,7 +5,7 @@ import PostCard from '../components/PostCard.astro'
 import Pagination from '../components/controllers/Pagination.astro'
 // Utils
 import type { PaginateFunction } from 'astro'
-import { GetSortedPosts } from '../utils/content'
+import { GetReadingMetadata, GetSortedPosts } from '../utils/content'
 
 export async function getStaticPaths({
   paginate,
@@ -35,9 +35,7 @@ const { page } = Astro.props
               tags={entry.data.tags}
               description={entry.data.description}
               image={entry.data.preview?.src}
-              readingMetadata={
-                (entry.rendered!.metadata as any).frontmatter.readingMetadata
-              }
+              readingMetadata={GetReadingMetadata(entry)}
             />
           </div>
         ))

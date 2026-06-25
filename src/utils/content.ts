@@ -1,4 +1,4 @@
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { IdToSlug } from "./hash";
 
 /**
@@ -29,33 +29,56 @@ export interface Category {
   posts: Archive[];
 }
 
+export interface ReadingMetadata {
+  time: number;
+  wordCount: number;
+}
+
+export async function GetVisiblePosts(): Promise<CollectionEntry<"posts">[]> {
+  return getCollection("posts", ({ data }: CollectionEntry<"posts">) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+}
+
+export function GetReadingMetadata(entry: CollectionEntry<"posts">): ReadingMetadata {
+  const metadata = entry.rendered?.metadata;
+  if (!metadata || typeof metadata !== "object") {
+    return { time: 1, wordCount: 0 };
+  }
+
+  const frontmatter = (metadata as Record<string, unknown>).frontmatter;
+  if (!frontmatter || typeof frontmatter !== "object") {
+    return { time: 1, wordCount: 0 };
+  }
+
+  const readingMetadata = (frontmatter as Record<string, unknown>).readingMetadata;
+  if (!readingMetadata || typeof readingMetadata !== "object") {
+    return { time: 1, wordCount: 0 };
+  }
+
+  const { time, wordCount } = readingMetadata as Record<string, unknown>;
+  if (typeof time !== "number" || typeof wordCount !== "number") {
+    return { time: 1, wordCount: 0 };
+  }
+
+  return { time, wordCount };
+}
+
 /**
  * Retrieves and sorts blog posts by their published date.
  *
  * This function fetches all blog posts from the "posts" collection, filters out drafts if in production mode,
- * and sorts them in descending order by their published date. It also adds `nextSlug`, `nextTitle`, `prevSlug`,
- * and `prevTitle` properties to each post for navigation purposes.
+ * and sorts them in descending order by their published date.
  *
  * @returns A promise that resolves to an array of sorted blog posts with navigation properties.
  */
 export async function GetSortedPosts() {
-  const allBlogPosts = await getCollection("posts", ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
-  });
+  const allBlogPosts = await GetVisiblePosts();
   const sorted = allBlogPosts.sort((a, b) => {
     const dateA = new Date(a.data.published);
     const dateB = new Date(b.data.published);
     return dateA > dateB ? -1 : 1;
   });
-
-  for (let i = 1; i < sorted.length; i++) {
-    (sorted[i].data as any).nextSlug = (sorted[i - 1] as any).slug;
-    (sorted[i].data as any).nextTitle = sorted[i - 1].data.title;
-  }
-  for (let i = 0; i < sorted.length - 1; i++) {
-    (sorted[i].data as any).prevSlug = (sorted[i + 1] as any).slug;
-    (sorted[i].data as any).prevTitle = sorted[i + 1].data.title;
-  }
 
   return sorted;
 }
@@ -71,9 +94,7 @@ export async function GetSortedPosts() {
  * @returns A promise that resolves to a map of archives grouped by year.
  */
 export async function GetArchives() {
-  const allBlogPosts = await getCollection("posts", ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
-  });
+  const allBlogPosts = await GetVisiblePosts();
 
   const archives = new Map<number, Archive[]>();
 
@@ -108,9 +129,7 @@ export async function GetArchives() {
  * @returns A promise that resolves to a map of tags. Each key is a tag slug, and the value is an object containing the tag's name, slug, and associated posts.
  */
 export async function GetTags() {
-  const allBlogPosts = await getCollection("posts", ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
-  });
+  const allBlogPosts = await GetVisiblePosts();
 
   const tags = new Map<string, Tag>();
   allBlogPosts.forEach((post) => {
@@ -144,9 +163,7 @@ export async function GetTags() {
  * @returns A promise that resolves to a map of categories, where each category contains its name, slug, and associated posts.
  */
 export async function GetCategories() {
-  const allBlogPosts = await getCollection("posts", ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
-  });
+  const allBlogPosts = await GetVisiblePosts();
 
   const categories = new Map<string, Category>();
 

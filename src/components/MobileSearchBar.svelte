@@ -7,16 +7,18 @@
   import { i18n } from "../locales/translation";
 
   let searchKeyword = "";
-  let searchResult: any[] = [];
+  let searchResult: PagefindResultData[] = [];
   let searchBarDisplay = false;
 
-  let resultPannel: HTMLDivElement = null!;
-  let searchBar: HTMLDivElement = null!;
-  let searchButton: HTMLButtonElement = null!;
+  let resultPannel: HTMLDivElement | undefined = undefined;
+  let searchBar: HTMLDivElement | undefined = undefined;
+  let searchButton: HTMLButtonElement | undefined = undefined;
 
-  let search = (keyword: string) => {};
+  let search: (keyword: string) => Promise<void> = async () => {};
 
   onMount(async () => {
+    if (!resultPannel) return;
+
     // setup overlay scrollbars
     OverlayScrollbars(resultPannel, {
       scrollbars: {
@@ -32,10 +34,11 @@
      * Toggles the visibility and height of the results panel based on the outcome.
      */
     search = async (keyword: string) => {
-      let searchResultArr = [];
+      if (!window.pagefind || !resultPannel) return;
 
-      // @ts-ignore
-      const ret = await pagefind.search(keyword);
+      const searchResultArr: PagefindResultData[] = [];
+
+      const ret = await window.pagefind.search(keyword);
       for (const item of ret.results) {
         searchResultArr.push(await item.data());
       }
@@ -51,24 +54,39 @@
         resultPannel.style.opacity = "0";
       }
     };
-  });
 
-  // handle click outside to closed search pannel
-  document.addEventListener("click", (event) => {
-    if (
-      !resultPannel.contains(event.target as any) &&
-      !searchBar.contains(event.target as any) &&
-      !searchButton.contains(event.target as any)
-    ) {
-      searchBar.style.height = "0px";
-      searchBar.style.opacity = "0";
-      searchBarDisplay = false;
-      searchKeyword = "";
-      search("");
-    }
+    // handle click outside to closed search pannel
+    const onDocumentClick = (event: MouseEvent) => {
+      const target = event.target;
+      if (
+        !(target instanceof Node) ||
+        !resultPannel ||
+        !searchBar ||
+        !searchButton
+      ) {
+        return;
+      }
+
+      if (
+        !resultPannel.contains(target) &&
+        !searchBar.contains(target) &&
+        !searchButton.contains(target)
+      ) {
+        searchBar.style.height = "0px";
+        searchBar.style.opacity = "0";
+        searchBarDisplay = false;
+        searchKeyword = "";
+        search("");
+      }
+    };
+
+    document.addEventListener("click", onDocumentClick);
+    return () => document.removeEventListener("click", onDocumentClick);
   });
 
   const toggleSearchBar = () => {
+    if (!searchBar) return;
+
     searchBarDisplay = !searchBarDisplay;
     if (searchBarDisplay) {
       searchBar.style.height = "48px";
